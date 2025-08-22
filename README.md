@@ -10,8 +10,7 @@
 
 - [Overview & Architecture](#overview--architecture)
 - [Getting Started](#getting-started)
-- [Repository Structure](#repository-structure)
-- [Weekly Roadmap](#weekly-roadmap)
+- [Weekly Roadmap](#planned-weekly-roadmap)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -21,75 +20,46 @@
 
 - Project Goal: Stand up a highly optimised, secure, and extensible local AI platform for private knowledge management and public-facing applications.
 - Core Technologies:  
-  - Proxmox VE 8.x (Hypervisor, LXC, VM)  
   - Intel i5-14400F, RTX 3060 12GB, B760  
+  - Proxmox VE (Hypervisor, LXC, VM)  
   - Ollama (Qwen 2.5, Mistral 7B)  
   - Qdrant, ChromaDB, Docker Compose  
   - Prometheus + Grafana + backup/recovery automation  
 - Architecture highlights: GPU passthrough, RAG pipelines, full-stack monitoring, and modular security.
 
-*Diagram: (add as soon as ready, or link to /docs/architecture.png)*
+*Diagram: (add as soon as ready, or link to /assets/architecture.png)*
 
 ---
 
 ## Getting Started
 
 1. **Review Hardware Requirements**
-   - Intel i5-14400F, RTX 3060 12GB, 128GB RAM recommended
-   - Three 1TB NVMe SSDs (RAID/ZFS preferred)
-   - B760 or compatible motherboard with BIOS vT-d/4G decoding
+   - Intel i5-14400F, RTX 3060 12GB, 128GB RAM
+   - Three 1TB NVMe SSDs
+   - B760 motherboard with BIOS vT-d/4G decoding
 
 2. **Begin at `/docs/host-setup.md`** for physical-to-virtualisation platform, then follow the week-by-week playbook and CLI scripts in `/scripts/`.
 
 ---
 
-## Repository Structure
-```
-/
-│ README.md
-│ LICENSE
-│ .gitignore
-│ CONTRIBUTING.md
-│
-├── docs/
-│ host-setup.md
-│ gpu-passthrough.md
-│ vm-private-ai.md
-│ lxc-public-ai.md
-│ monitoring.md
-│ backup-restore.md
-│ dev-environment.md
-│ security.md
-│ milestone-checklist.md
-│ appendix.md
-│
-├── scripts/
-│ ai-backup.sh
-│ disaster-recovery.sh
-│ validate-cpu-setup.sh
-│ ai-benchmark.sh
-│ perf-tuning.sh
-│
-├── docker-compose/
-│ private-ai-stack.yml
-│ public-ai-stack.yml
-│ monitoring-stack.yml
-│
-└── notebooks/
-example-ai-playground.ipynb
-```
----
+## Planned Weekly Roadmap:
 
-## Weekly Roadmap
+| Week | Focus Area | Key Outcome/Deliverable |
+| :---- | :---- | :---- |
+| 1 | Host Setup, BIOS, Proxmox VE Install | Secure, accessible Proxmox VE 8.x host |
+| 2 | RAID/LVM Storage, Network, Access Config | Storage pools, static IP, remote admin |
+| 3 | GPU Passthrough Enablement (BIOS \+ Host) | IOMMU/VT-d validated, RTX 3060 isolated |
+| 4 | Proxmox VM/LXC Creation, Topology Tuning | Private AI VM and Public AI LXC in place |
+| 5 | CPU/Memory/NUMA/IO Tuning | Optimized resource configs, hugepages, pinning |
+| 6 | Private AI Stack (Ollama \+ Qwen \+ Qdrant) | Private AI VM serving LLM via WebUI, private vector |
+| 7 | Public AI Stack (Ollama \+ Mistral \+ ChromaDB) | Public AI LXC serving LLM, ChromaDB API functional |
+| 8 | Docker Compose, Networking | Compose workflows, isolated/bridged subnets |
+| 9 | Monitoring: Prometheus, Grafana, Alerting | Dashboards and health alerts for all infra |
+| 10 | Backup, Recovery, Automation | Automated backup scripts, disaster recovery tested |
+| 11 | RAG Pipeline, Dev Container, Jupyter | Document chunking, dev tools, JupyterLab online |
+| 12 | Security Review, Benchmark, Final Tuning | Firewall finalization, performance, handover docs |
 
-| Week | Focus                | Key Deliverable                |
-|------|----------------------|-------------------------------|
-| 1-2  | Host, storage        | Secure Proxmox VE install      |
-| 3-4  | GPU, CPU, VM/LXC     | Passthrough, topology, VMs     |
-| 5-6  | Private AI stack     | Qwen/Ollama/Qdrant, WebUI      |
-| 7-8  | Public AI stack      | Mistral/Chroma/WebUI           |
-| 9-10 | Monitoring, backups  | Grafana/Prometheus/scripts     |
-| 11-12| RAG, dev, security   | LangChain/dev env/hardening    |
+*Each week: 2 hr/day, checklist-driven*
 
 > See `/docs/milestone-checklist.md` to track my progress!
 
