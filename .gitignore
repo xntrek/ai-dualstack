@@ -1,0 +1,71 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+#####################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# VSCode
+.vscode/
+.code-workspace
+
+# Docker
+**/docker-compose.override.yml
+**/.env
+**/docker.env
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints
+
+# Proxmox/Backups
+/backup/
+/var/lib/vz/dump/
+/var/log/ai-*.log
+
+# Misc
+.env
+*.swp
+*.bak
+*.tmp
+
+# Node/npm (if used for front-end/web)
+/node_modules/
+npm-debug.log
+yarn-error.log
