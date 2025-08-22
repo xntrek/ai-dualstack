@@ -1,12 +1,22 @@
-# Script Index
+# Scripts Index — ai-dualstack
 
-- `validate-cpu-setup.sh`: Checks CPU pinning, affinity, and active processes.
-- `ai-benchmark.sh`: Runs GPU/memory/model inference performance benchmarks.
-- `ai-backup.sh`: Automated backup of VM/LXC and Docker volumes.
-- `disaster-recovery.sh`: Emergency restore for VM/LXC from backup.
+This directory contains operational CLI and maintenance scripts for your AI dual-stack architecture.
 
-## Usage
-To run any script, from repo root:
-`./scripts/scriptname.sh`
+| Script Name                 | Purpose                                          |
+| --------------------------- | ------------------------------------------------|
+| `validate-cpu-setup.sh`     | Validates CPU affinity, pinning, and assignments|
+| `ai-benchmark.sh`           | Runs system AI performance benchmarks           |
+| `ai-backup.sh`              | Creates automated backups of VM, LXC, volumes   |
+| `disaster-recovery.sh`      | Restores VM or LXC from last backup             |
 
-Some scripts may require `sudo` or a specific environment, as described in each file.
+**Usage:**  
+Make script executable:  
+`chmod +x ./scripts/scriptname.sh`
+
+Then run:  
+`sudo ./scripts/scriptname.sh`
+
+
+Some scripts require `root` and specific underlying binaries (see individual comments).
+
+---
