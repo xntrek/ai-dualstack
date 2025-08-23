@@ -1,28 +1,14 @@
-Docker Compose Example (Qdrant/Chroma/Ollama)
+Docker Compose (Qdrant/Chroma/Ollama)
 
-docker-compose.yml sample:
+> _Coming Soon_
 
-```
-version: '3.8'
-services:
-  ollama:
-    image: ollama/ollama:latest
-    ports:
-      - "11434:11434"
-    volumes:
-      - ./ollama_data:/root/.ollama
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
 
-  qdrant:
-    image: qdrant/qdrant:latest
-    ports:
-      - "6333:6333"
-    volumes:
-      - ./qdrant_storage:/qdrant/storage
-```
+See also:
+ - [A Quick Guide to Docker Compose](../guides/docker-compose-guide.md)
+ - [/docker-compose/](../docker-compose/README.md)   # final compose.yml files
+
+For More Information on configuration options:   
+ - [DockerDocs: Compose file reference](https://docs.docker.com/reference/compose-file/)
+ - [DockerDocs: Docker Compose](https://docs.docker.com/compose/)
+- [The Compose Specification](https://github.com/compose-spec/compose-spec/blob/main/spec.md)
+
