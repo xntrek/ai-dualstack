@@ -1,5 +1,4 @@
-# Host Setup Guide  
-### /docs/host-setup.md   
+# Host Setup Guide
 ---
 
 This guide offers a step-by-step installation for deploying a dual-AI platform on Proxmox VE
@@ -25,12 +24,15 @@ This guide offers a step-by-step installation for deploying a dual-AI platform o
 Validation Command (after Proxmox installation):   
 `dmesg | grep -e DMAR -e IOMMU`
 
+> see also [scripts/validate-cpu-setup.sh](../scripts/validate-cpu-setup.sh)
+
+
 ## Proxmox Installation
  - Download [Proxmox VE ISO](https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso)
  - Create USB installer [Etcher](https://etcher.balena.io/)
 
 ## Installation Steps:
- - Boot from USB installer
+ ### Boot from USB installer
  - Select "`Install Proxmox VE`" from the boot menu
  - Accept EULA and proceed
 ### Target Disk Selection:
@@ -42,7 +44,7 @@ Validation Command (after Proxmox installation):
  - Create a strong root password
  - Provide a valid email for system notifications
 ### Network Configuration:
- - Configure the management interface with a static IP _[1]_
+ - Configure the management interface with a static IP [_[1]_](#1--configure-static-ip-in-etcnetworkinterfaces)
 
  - Installation Summary - Review and confirm
  - Reboot after installation completes
@@ -52,7 +54,7 @@ Validation Command (after Proxmox installation):
 `pveversion -v`
 
 ---
-   _[1]_ Configure static IP in `/etc/network/interfaces`  
+### _[1]_  Configure static IP in `/etc/network/interfaces`  
 __Example configuration:__   
 
             auto lo

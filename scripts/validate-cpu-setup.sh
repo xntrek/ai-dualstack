@@ -1,7 +1,7 @@
 #!/bin/bash
 # validate-cpu-setup.sh
 # Checks CPU governor, NUMA, Proxmox VM/CT affinity, and key AI process usage.
-# Usage: sudo ./validate-cpu-setup.sh
+# Usage: `sudo ./validate-cpu-setup.sh`
 
 echo "=== CPU Governor States ==="
 for cpu in {0..15}; do

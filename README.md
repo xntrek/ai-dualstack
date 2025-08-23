@@ -10,32 +10,30 @@
 
 ## Table of Contents
 
-- [Overview & Architecture](#overview--architecture)
-- [Getting Started](#getting-started)
-- [Weekly Roadmap](#planned-weekly-roadmap)
+- [Overview](#overview) & [Architecture](#architecture-key-components)
+- [Getting Started](#getting-started-custom-hardware-build)
+- [Weekly Roadmap](#proposed-weekly-roadmap)
 - [Contributing](#contributing)
 - [License](#license)
 
 ---
 
-## Overview & Architecture
+## Overview
+Project Goal: Stand up a highly optimised, secure, and extensible local AI platform for private knowledge management and public-facing applications.
 
-- Project Goal: Stand up a highly optimised, secure, and extensible local AI platform for private knowledge management and public-facing applications.
-- Core Technologies:  
-  - Intel i5-14400F, RTX 3060 12GB, B760  
-  - Proxmox VE (Hypervisor, LXC, VM)  
-  - Ollama (Qwen 2.5, Mistral 7B)  
-  - Qdrant, ChromaDB, Docker Compose  
-  - Prometheus + Grafana + backup/recovery automation  
-- Architecture highlights: GPU passthrough, RAG pipelines, full-stack monitoring, and modular security.
+## **Architecture: Key Components**
+* **Proxmox VE** with hardware passthrough (BIOS/host config)
+* **Private AI VM** (Ollama \+ Qwen 2.5 \+ Qdrant, GPU-enabled)
+* **Public AI LXC** (Ollama \+ Mistral \+ ChromaDB, CPU-optimized)
+* **Dev/monitor LXC(s)** (JupyterLab, Prometheus, Grafana for observability)
+* **Security**: Isolated networks, firewall, monitoring, regular updates/backups 
+> Architecture highlights: GPU passthrough, RAG pipelines, full-stack monitoring, and modular security.
 
 > _*Diagram: (will add as soon as ready)*_
 
 ---
 
-## Getting Started
-
-**Custom Hardware Build**
+## Getting Started: Custom Hardware Build
  - 1 X Gigabyte B760 GAMING X AX MB, B760, 4x DDR5, 3x PCI-E 4.0/3.0 x16, 3x M.2, 4x SATA3, 2x USB 3.2, 1x USB-C 3.2, DisplayPort 1.2, HDMI 2.0, ATX, WIFI 6E
  - 1 X Intel Core i5 14400F (Base:2.5GHz, Turbo:4.7GHz / 29.5MB / LGA1700 / 10 Core / 16 Threads / 65W / Raptor Lake Refresh)
   - 1 X Thermalright Peerless Assassin 140 Black Dual Tower CPU Cooler, 120mm and 140mm Fan, Compatible with Intel 115X, 1200, 1700, 185X, 2011, 2066, AMD AM5
