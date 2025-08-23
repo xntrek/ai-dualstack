@@ -12,7 +12,7 @@
 
 - [Overview](#overview) & [Architecture](#architecture-key-components)
 - [Getting Started](#getting-started-custom-hardware-build)
-- [Weekly Roadmap](#proposed-weekly-roadmap)
+- [Project Roadmap](#proposed-implementation-steps--milestones)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -34,20 +34,23 @@ Project Goal: Stand up a highly optimised, secure, and extensible local AI platf
 ---
 
 ## Getting Started: Custom Hardware Build
- - 1 X Gigabyte B760 GAMING X AX MB, B760, 4x DDR5, 3x PCI-E 4.0/3.0 x16, 3x M.2, 4x SATA3, 2x USB 3.2, 1x USB-C 3.2, DisplayPort 1.2, HDMI 2.0, ATX, WIFI 6E
- - 1 X Intel Core i5 14400F (Base:2.5GHz, Turbo:4.7GHz / 29.5MB / LGA1700 / 10 Core / 16 Threads / 65W / Raptor Lake Refresh)
-  - 1 X Thermalright Peerless Assassin 140 Black Dual Tower CPU Cooler, 120mm and 140mm Fan, Compatible with Intel 115X, 1200, 1700, 185X, 2011, 2066, AMD AM5
- - 2 X G.Skill Flare X5 64GB (2x32GB) PC5-48000 (6000MHz) DDR5, CL 36-36-36, 1.35V, Dual Channel Kit, Intel XMP 3.0 and EXPO Ready
- - 3 X Crucial 1TB SSD, P3 Plus, M.2 2280 NVMe PCIe 4.0, Read up to 5,000MB/s, Write up to 3,600MB/s, 2M Hours MTBF, 220TBW
- - 1 X MSI GeForce RTX 3060 VENTUS 2X 12G OC (Boost: 1807MHz), 12GB GDDR6 (15000MHz), PCI-E 4.0, 3x DisplayPort 1.4a, 1x HDMI 2.1, Vented Backplate, TORX Fan
+> A core part of the decision maaking towards this system was remaining under a $AUD 2400 budget whilst having a configuration that delivers good local AI capabilities \& performance (aiming at 50-70+ tokens/second) while maintaining complete data privacy and requiring minimal maintenance overhead. The component choices therefore represent aiming to achieve the optimal balance of privacy, performance, scalability and operational simplicity. 
 
-> **Begin at `/docs/host-setup.md`** for the physical-to-virtualisation platform configurations.
+ - 1 X [Gigabyte B760 GAMING](https://www.gigabyte.com/Motherboard/B760-GAMING-X-DDR4-rev-10) X AX MB, B760, 4x DDR5, 3x PCI-E 4.0/3.0 x16, 3x M.2, 4x SATA3, 2x USB 3.2, 1x USB-C 3.2, DisplayPort 1.2, HDMI 2.0, ATX, WIFI 6E
+ - 1 X [Intel Core i5 14400F](https://www.intel.com/content/www/us/en/products/sku/236777/intel-core-i5-processor-14400f-20m-cache-up-to-4-70-ghz/specifications.html) (Base:2.5GHz, Turbo:4.7GHz / 29.5MB / LGA1700 / 10 Core / 16 Threads / 65W / Raptor Lake Refresh)
+  - 1 X [Thermalright Peerless Assassin 140 Black Dual Tower CPU Cooler](https://www.thermalright.com/product/peerless-assassin-140-black/), 120mm and 140mm Fan, Compatible with Intel 115X, 1200, 1700, 185X, 2011, 2066, AMD AM5
+ - 2 X [G.Skill Flare X5 64GB (2x32GB) PC5-48000 (6000MHz) DDR5](https://www.gskill.com/products/1/165/396/Flare-X5-DDR5-AMD-EXPO), CL 36-36-36, 1.35V, Dual Channel Kit, Intel XMP 3.0 and EXPO Ready
+ - 3 X [Crucial 1TB SSD](https://www.crucial.com/ssd/p3-plus/CT1000P3PSSD8), P3 Plus, M.2 2280 NVMe PCIe 4.0, Read up to 5,000MB/s, Write up to 3,600MB/s, 2M Hours MTBF, 220TBW
+ - 1 X [MSI GeForce RTX 3060 VENTUS 2X 12G OC](https://www.msi.com/Graphics-Card/GeForce-RTX-3060-VENTUS-2X-12G-OC) (Boost: 1807MHz), 12GB GDDR6 (15000MHz), PCI-E 4.0, 3x DisplayPort 1.4a, 1x HDMI 2.1, Vented Backplate, TORX Fan
+
+> **Begin at [`/docs/host-setup.md`](/docs/host-setup.md)** for the physical-to-virtualisation platform configurations.
 
 ---
 
-## Proposed Weekly Roadmap
+## Proposed Implementation Steps & Milestones
+> Oh, yes, this is subject to change. I'm following a few interesting projects at the moment that may strongly influence me to incorporate their findings. I will record and track these changes when and if they occur.
 
-| Week | Focus Area | Key Outcome/Deliverable |
+| Step | Focus Area | Key Outcome/Deliverable |
 | ----- | ----- | ----- |
 | 1 | Host Setup, BIOS, Proxmox VE Install | Secure, accessible Proxmox VE host |
 | 2 | RAID/LVM Storage, Network, Access Config | Storage pools, static IP, remote admin |
@@ -68,7 +71,7 @@ Project Goal: Stand up a highly optimised, secure, and extensible local AI platf
 
 ## Contributing
 
-Contributions and suggestions are welcome — please fork and submit pull requests, or use Issues/Discussions for suggestions, requests and Q&A.
+Contributions and suggestions are welcome — please use Issues/Discussions for suggestions, requests and Q&A. I don't percieve that you will want to, but you are of course welcome to fork or submit pull requests as well.
 
 ---
 
