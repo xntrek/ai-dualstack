@@ -7,13 +7,13 @@ Welcome! This map is your guide to the DualStack AI Repo—helping you (and stak
 - [A0 Executive Brief](A0_Executive-Brief.md)  
 - [A1 AI Fundamentals: Today](A1_AI-Fundamentals-Today.md)  
 - [A2 Architecture Overview](A2_Architecture-Overview.md)  
-- [A3 Infrastructure Guide](docs/host-setup.md)  
-- [A4 GPU Passthrough & VM](docs/gpu-passthrough.md)  
-- [A5 AI Stack & Models](docs/ai-stack.md)  
-- [A6 Monitoring, Backup, Security](docs/milestone-checklist.md)  
-- [A7 Performance Tuning](docs/perf-tuning.md)  
-- [B0 Weekly Playbook](lessons/)  
-- [C0 Templates & Checklists](50_Templates-Checklists/)  
+- [A3 Infrastructure Guide](A3_Infrastructure_Guide.md)  
+- [A4 GPU Passthrough & VM](.)  
+- [A5 AI Stack & Models](.)  
+- [A6 Monitoring, Backup, Security](.)  
+- [A7 Performance Tuning](.)  
+- [B0 Weekly Playbook](.)  
+- [C0 Templates & Checklists](.)  
 
 ---
 
