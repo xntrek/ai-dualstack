@@ -1,25 +1,23 @@
-# Dual-AI Stack Implementation
+# Architecture Stack
 
-## AI VM & LXC Architecture
+## **AI Hub Technology Stack**
 
-| Criteria            | VM            | LXC           | Recommendation           |
-|---------------------|---------------|---------------|--------------------------|
-| GPU Passthrough     | Full support  | Limited       | VM for Private AI        |
-| Performance         | Higher overhead| Lower        | LXC for Public AI        |
-| NVIDIA Drivers      | Standard      | Complex       | VM preferred for drivers |
-
-
-**Architecture:**
-- Private AI: Qwen 2.5 7B + Qdrant in VM with GPU
-- Public AI: Mistral 7B + ChromaDB in LXC/container
-
-## Ollama & Model Installation
-
-- VM: `curl -fsSL https://ollama.ai/install.sh | sh`
-- Download model: `ollama pull qwen2.5:7b`
-- Public AI WebUI: deployed in Docker, configured for Mistral
-
-## Vector Database Deployment
-
-- Qdrant (Private, VM): `docker-compose up -d qdrant`
-- ChromaDB (Public, LXC): `docker-compose up -d chromadb`
+| **_Function Category_** | **Common Use Cases** | **Open Source Tools & Frameworks** | **_AI Hub Choice_** | **Reasoning** |
+|---|---|---|---|---|
+| _Platform & Infrastructure_ | Virtual environments, container orchestration, resource management | Proxmox, Docker, Kubernetes, LXC | _Proxmox VE (Hypervisor)<br>Docker Compose (Container orchestration)_ | Perfect for dual-environment isolation with dedicated GPU allocation |
+| _Base Models_ | Text generation, multimodal AI, specialized tasks | Llama 3.2, Qwen 2.5, Mistral, Gemma, Whisper, LLaVA | _Qwen 2.5 14B/32B (Private reasoning)<br>Mistral 7B (Public lightweight)_ | Qwen offers better multilingual + reasoning; Mistral for efficient public serving |
+| _Model Deployment_ | Serving LLMs, API endpoints, model lifecycle | Ollama, vLLM, TensorRT-LLM, TorchServe | _Ollama (Primary runtime)<br>vLLM (High-performance inference)_ | Ollama for simplicity; vLLM for production-grade performance when needed |
+| _Model Management_ | Prompt engineering, workflow orchestration, model ops | LangChain, LangFlow, Semantic Kernel | _LangChain (Core orchestration)<br>LangFlow (Visual prototyping)_ | LangChain for enterprise skills; LangFlow for rapid experimentation |
+| _Vector Databases_ | Semantic search, embeddings storage, similarity matching | Chroma, Qdrant, Weaviate, Milvus | _Chroma (Private environment)<br>Qdrant (Public environment)_ | Chroma for simplicity; Qdrant for production features and metadata filtering |
+| _Graph Knowledge Bases_ | Relationship mapping, knowledge graphs, memory | Neo4j, GraphRAG, NetworkX, Zep | _Neo4j Community (Graph database)<br>Zep (Conversational memory)_ | Neo4j for complex relationships; Zep for session management |
+| _Document Processing_ | OCR, PDF parsing, data extraction | Unstructured.io, LlamaParse, PyPDF2, Tesseract | _Unstructured.io (Primary)<br>LlamaParse (LlamaIndex integration)_ | Unstructured.io for comprehensive processing; LlamaParse for better LLM integration |
+| _RAG Engines_ | Retrieval-augmented generation, document Q&A | LlamaIndex, Haystack, LangChain RAG | _LlamaIndex (Document-centric RAG)<br>LangChain RAG (Complex pipelines)_ | LlamaIndex excels at document ingestion; LangChain for advanced orchestration  |
+| _LLM Frameworks_ | Fine-tuning, prompt engineering, model training | HuggingFace Transformers, Unsloth, LoRA | _HuggingFace Transformers (Core)<br>Unsloth (Efficient fine-tuning)_ | HF for ecosystem compatibility; Unsloth for resource-efficient training |
+| _AI Agent Frameworks_ | Multi-step reasoning, autonomous workflows | CrewAI, AutoGen, LangGraph, OpenAI Swarm | _CrewAI (Multi-agent orchestration)<br>LangGraph (Complex workflows)_ | CrewAI for team-based agents; LangGraph for precise workflow control |
+| _Data Platforms_ | ETL, workflow automation, data orchestration | Apache Airflow, Prefect, dbt, DuckDB | _DuckDB (Analytics)<br>Prefect (Workflow orchestration)_ | DuckDB for local analytics; Prefect for modern data workflows |
+| _Model Evaluation_ | Performance tracking, drift detection, debugging | Langfuse, Phoenix (Arize), RAGAS, TruLens | _Langfuse (LLM observability)<br>RAGAS (RAG evaluation)_ | Langfuse for comprehensive tracking; RAGAS for RAG-specific metrics |
+| _Development Environment_ | IDEs, code assistance, debugging | VS Code, Cursor, Windsurf, JupyterLab | _Cursor (AI-enhanced coding)<br>JupyterLab (Experimentation)_ | Cursor for AI-assisted development; Jupyter for interactive analysis |
+| _Web Frameworks_ | APIs, UIs, rapid prototyping | FastAPI, Streamlit, Gradio, Django | _FastAPI (Production APIs)<br>Streamlit (Rapid prototyping)_ | FastAPI for robust APIs; Streamlit for quick demo interfaces |
+| _Authentication & Security_ | Multi-tenant auth, API security | Keycloak, Auth0, OAuth2, JWT | _Keycloak (Open source IAM)<br>OAuth2/JWT (API security)_ | Keycloak for enterprise-grade auth; OAuth2 for API protection |
+| _Monitoring & Observability_ | System monitoring, logging, alerting | Prometheus, Grafana, ELK Stack | _Prometheus + Grafana (Metrics)<br>Docker logging (Container logs)_ | Prometheus/Grafana for comprehensive monitoring |
+| _Storage & Backup_ | File storage, backup, synchronization | MinIO, Rclone, Restic, Tresorit | _MinIO (S3-compatible storage)<br>Rclone (Cloud sync)_ | MinIO for local object storage; Rclone for cloud integration |

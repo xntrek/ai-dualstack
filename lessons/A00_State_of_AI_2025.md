@@ -1,7 +1,31 @@
 # The State of AI
 ---
+<details><summary>TL;DR</summary>
 
-The artificial intelligence landscape in 2025 represents an incongruous contradiction: unprecedented technical capabilities coupled with persistent fundamental limitations, massive commercial investment alongside concerning ethical blind spots, and democratized access to powerful tools shadowed by concentrated control over foundational infrastructure. 
+> ### AI 2025: powerful, pervasive, but uneven. 
+>
+> The stack is shifting from standalone models to context‑aware systems that blend retrieval, generation, and real‑time data—unlocking utility while exposing fresh reliability, safety, and governance gaps. 
+>
+> The next frontier is not _bigger models_, but _better systems_: orchestrated, multimodal, and increasingly local at the edge.
+>
+> _Key takeaways_:
+> - __Architecture shift__: From static models to dynamic, RAG‑grounded, tool‑using agents embedded in workflows, redefining “AI capability” as system design, not just parameters.  
+> - __Democratization vs. concentration__: Access has broadened (APIs, open weights, local runtimes), yet power concentrates in compute, data, and pretraining—creating strategic dependencies.  
+> - __Strengths and limits__: Generative quality, multimodal fluency, and automation are real; hallucinations, inconsistency, domain gaps, and brittle reasoning persist — evaluation and oversight are now core competencies.  
+> - __Economics bite__: Prototyping is cheap; production is costly — compute, RAG pipelines, human oversight, and maintenance drive TCO; many pilots underdeliver without disciplined ROI governance.  
+> - __Edge/home AI rise__: Privacy, latency, and control pull workloads local; but self‑hosting inherits (and can amplify) risks — security hardening, bias mitigation, and threat modeling are mandatory.  
+> - __Workforce shift__: Value moves to AI collaboration, orchestration, assurance, and governance; organizations need AI literacy, transparent processes, and robust evaluation to scale impact.  
+>- __Ethics & futures__: Two philosophies shape roadmaps — “control after creation” vs. “alignment by design.” Both matter as autonomy grows; trust will hinge on transparency, safeguards, and human‑centered design.  
+>
+> __Bottom line__: The winners won’t just ship smarter models—they’ll engineer trustworthy systems, align incentives with outcomes, and balance cloud scale with edge sovereignty to earn durable ROI and societal trust.
+
+</details>
+
+---
+
+## Opening Thoughts
+
+<details><summary>The artificial intelligence landscape in 2025 represents an incongruous contradiction:</summary> unprecedented technical capabilities coupled with persistent fundamental limitations, massive commercial investment alongside concerning ethical blind spots, and democratized access to powerful tools shadowed by concentrated control over foundational infrastructure. 
 
 This reveals an ecosystem in rapid transition from experimental novelty to mission-critical infrastructure, yet still grappling with core reliability, safety, and governance challenges.
 
@@ -9,11 +33,15 @@ The most critical insight emerging from this analysis is that we are witnessing 
 
 This evolution demands new frameworks for understanding AI capabilities, limitations, and deployment strategies. 
 
-The question is can we meet this demand, or must we face a  $\color{Red}{deflation,\ crash\ or\ collapse\ }$ before the $\color{CornflowerBlue}{inevitable\ restructure\ or\ rebuild?\ }$
+> The question is can we meet this demand, or must we face a  deflation, crash or collapse before the inevitable restructure and rebuild?
+
+</details>
 
 ## The Decade of AI Expansion
 
-The last decade has witnessed one of the most extraordinary accelerations in the ongoing and rapid history of technology, as artificial intelligence transitioned from a domain of _narrow, single-task machine learning_ systems to a broad, vibrant ecosystem of specialized and foundational models. 
+<details><summary>The last decade has witnessed one of the most extraordinary accelerations in the ongoing and rapid history of technology.</summary> 
+
+As artificial intelligence transitioned from a domain of _narrow, single-task machine learning_ systems to a broad, vibrant ecosystem of specialized and foundational models, it dwarfed every other technology advancement news.
 
 In the mid-2010s, most machine learning breakthroughs centered on __“deep learning”__ — powerful, data-hungry neural networks that achieved superhuman results in very specific domains. 
 
@@ -48,10 +76,12 @@ These users move beyond superficial interaction, mastering advanced prompt engin
 The effect is a tools-driven renaissance: basic consumers use AI as just another digital convenience, while advanced users continuously push the boundaries of what’s possible by manipulating, combining, and extending the capabilities of the underlying models. 
 
 As a result, the landscape is converging: specialisation and generalisation, open and closed models, text and multimodal input, powerful APIs and local deployment all coexist, often within the same platform or workflow.
+</details>
 
 ## The Practitioner Shift: From Narrow Tasks to Universal Toolkits
 
-Over recent years, the path from simple prompt engineering to true context engineering has not been a straight line. 
+<details><summary>Over recent years, the path from simple prompt engineering to true context engineering has not been a straight line. 
+</summary>
 
 Instead, a cohort of practitioners has navigated a complex progression — moving from agentic AI, to multi-agent and multi-context planning (MCP), before entering an era of multi-modal, multi-agent orchestration. 
 
@@ -68,39 +98,44 @@ There seems to be a collective goal of enabling AI to be seamlessly woven into c
 This ongoing convergence reflects a larger narrative. 
 
 As boundaries blur between generalist and specialist models, and as applications become increasingly agentic, multi-modal, and orchestrated, the field is experiencing a redefinition — one driven as much by new practitioner mindsets as by technical breakthroughs.
+</details>
 
+## Capability Assessment: What AI Can and Cannot Do (Today)
 
-### Capability Assessment: What AI Can and Cannot Do (Today)
+<details><summary> There are several domains where AI has achieved remarkable capabilities, however, despite remarkable progress, fundamental limitations do still persist.</summary>
 
-There are several domains where AI has achieved remarkable capabilities, however, despite remarkable progress, fundamental limitations do still persist.
-
-| **Current Strengths** | **Persistent Limitations** |
-|:---|:---|
-|  |  |
-| **_Content Generation and Synthesis_** | **_Reliability Issues_** |
-| - Writing assistance, code generation, and creative content production | - **Hallucinations** remain a core problem, with models confidently generating incorrect information |
-| - Multi-modal understanding combining text, images, and audio | - **Inconsistency** in outputs for identical inputs due to probabilistic nature |
-| - Complex reasoning through techniques like Chain-of-Thought prompting | - **Context confusion** when dealing with large or conflicting information sources |
-|  |  |
-| **_Information Processing_** | **_Knowledge Boundaries_** |
-| - Document analysis and summarization at scale | - **Static training data** limitations requiring constant RAG-based updates |
-| - Pattern recognition in structured and unstructured data | - **Domain-specific knowledge gaps** particularly in specialized fields |
-| - Real-time language translation and cross-modal conversion | - **Real-time information** access dependencies on external systems |
-|  |  |
-| **_Automation and Orchestration_** | **_Reasoning Limitations_** |
-| - Multi-step workflow automation through agentic systems | - **Causal reasoning** difficulties in complex, multi-factor scenarios |
-| - Tool integration and API orchestration | - **Common sense** failures in edge cases and unusual situations |
-| - Adaptive user interfaces and personalized experiences | - **Meta-cognitive awareness** inability to reliably assess their own limitations |
+> 
+> | **Current Strengths** | **Persistent Limitations** |
+> |:---|:---|
+> |  |  |
+> | **_Content Generation and Synthesis_** | **_Reliability Issues_** |
+> | - Writing assistance, code generation, and creative content production | - **Hallucinations** remain a core problem, with models confidently generating incorrect information |
+> | - Multi-modal understanding combining text, images, and audio | - **Inconsistency** in outputs for identical inputs due to probabilistic nature |
+> | - Complex reasoning through techniques like Chain-of-Thought prompting | - **Context confusion** when dealing with large or conflicting information sources |
+> |  |  |
+> | **_Information Processing_** | **_Knowledge Boundaries_** |
+> | - Document analysis and summarization at scale | - **Static training data** limitations requiring constant RAG-based updates |
+> | - Pattern recognition in structured and unstructured data | - **Domain-specific knowledge gaps** particularly in specialized fields |
+> | - Real-time language translation and cross-modal conversion | - **Real-time information** access dependencies on external systems |
+> |  |  |
+> | **_Automation and Orchestration_** | **_Reasoning Limitations_** |
+> | - Multi-step workflow automation through agentic systems | - **Causal reasoning** difficulties in complex, multi-factor scenarios |
+> | - Tool integration and API orchestration | - **Common sense** failures in edge cases and unusual situations |
+> | - Adaptive user interfaces and personalized experiences | - **Meta-cognitive awareness** inability to reliably assess their own limitations |
+</details>
 
 ## The Commercial and Economic Dynamics
 
-Over the past few years, the commercial and economic underpinnings of artificial intelligence have crystallised around the importance of foundational infrastructure. 
+<details><summary>Over the past few years, the commercial and economic underpinnings of artificial intelligence have crystallised around the importance of foundational infrastructure. 
+</summary>
 
 True influence in the AI landscape increasingly resides not with end-user applications, but with those who control the critical building blocks: compute resources, high-quality training data, and the design and pre-training of large models. 
 
 This foundational layer is dominated by a few major tech players and cloud providers, centralizing both technical and strategic power while creating dependencies that ripple through the industry.
 
-Running parallel to this consolidation is the reality that scaling AI remains capital- and resource-intensive. While experimentation and prototyping have become remarkably accessible, particularly through cloud APIs and platform services, moving into production environments quickly exposes significant hidden costs. 
+Running parallel to this consolidation is the reality that scaling AI infrastructure remains not only capital- _and_ resource-intensive, but we are becoming increasingly aware of the intensive impact these Data Centers have on the communities and environments in which they are built. 
+
+While experimentation and prototyping have become remarkably accessible, particularly through cloud APIs and platform services, moving into production environments quickly exposes significant hidden costs. 
 
 Compute demands can escalate unpredictably with model inference and retraining workloads; storage and data processing expenses, especially in retrieval-augmented generation (RAG) systems, add up rapidly; and the continuous human oversight required for reliable operation (et alone the maintenance cycles for model and infrastructure updates) compounds operational complexity. 
 
@@ -113,10 +148,11 @@ At the same time, the rapid investment and commoditization of cloud platforms an
 This is the landscape in which a resurgent self-hosting culture and the rise of home-AI systems are now taking hold — driven by the desire for autonomy, cost predictability, privacy, and customisation, as well as a reaction to growing concentration in the AI infrastructure market. 
 
 It's in this re-bourgeoning of DIY and exploring where individuals and organisations are learning to leveraging advancements in hardware, open models, and orchestration tools to run powerful AI at the edge or even in the privacy of their own homes.
+</details>
 
-### Self-Hosting faces the same Risk and Safety Considerations
+## Self-Hosting faces the same Risk and Safety Considerations
 
-Self-hosting and edge AI deployments open new possibilities for autonomy, privacy, and cost control. 
+<details><summary>Self-hosting and edge AI deployments open new possibilities for autonomy, privacy, and cost control.</summary>
 
 However, these benefits are tethered to serious risk and safety challenges that mirror, and sometimes intensify, those seen in large-scale, cloud-managed AI systems. 
 
@@ -143,10 +179,12 @@ For those deploying AI at the edge or in the home, vigilance, layered security, 
 Ultimately, the promise of self-hosted and edge AI is matched by the gravity of the risks involved. 
 
 Mitigating these challenges demands the same (if not more) attention to security frameworks and ethical guardrails as any large-scale deployment, even as the tools and expertise available may be more limited.
+</details>
 
 ## Future Trajectories and Implications
 
-Looking forward, the future of AI suggests a rapid evolution, not only in the sophistication of the underlying technologies but also in the way they are distributed and integrated into daily life. 
+<details><summary>Looking forward, the future of AI suggests a rapid evolution, not only in the sophistication of the underlying technologies but also in the way they are distributed and integrated into daily life. 
+</summary>
 
 Multi-agent systems, hybrid architectures, and especially edge deployments are poised to become central to the next wave of innovation. 
 
@@ -191,10 +229,11 @@ This branch of thought focuses on designing AI systems to be inherently aligned 
 For home and edge AI, does this vision mean equipping systems with value locks? explainability? meaningful user consent? Do we make them partners in daily life, rather than subserviant workers? Are we stimulating activities which potentially fosters adversarial behaviours?
 
 The philosophical divergence boils down to two primary strategies: one is oriented around controlling advanced AI (and preparing for the possibility of misalignment or loss of oversight); the other assumes that intentional, aligned designv (with systems crafted from the outset to support and augment human flourishing) will keep technologies beneficial. 
+</details>
 
 ## Final thoughts.
 
-Essentially, I'm not convinced that the upheaval and convulsions of the current AI bubble is complete, though I am awaiting the inevitable pop. 
+<details><summary>Essentially, I'm not convinced that the upheaval and convulsions of the current AI bubble are complete, though I am awaiting the inevitable pop.</summary>     
 
 However, it does seem clear to me that the trajectory is bifurcated between those who want to replace "inefficiencies" of repetative, labour intensive tasks and those whome are increasingly seekng to build systems that augment rather than replace human intelligence.
 
@@ -206,4 +245,5 @@ As with all great technological upheavals, it will require continued vigilance, 
 
 All so we can say we are building systems that are worthy of the trust we place in them.
 
-<!-- Taiss Quartapa, 26 August, 2025 -->
+<!-- Taiss Quartapa, 26 August, 2025 --> 
+</details>

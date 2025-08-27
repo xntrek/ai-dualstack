@@ -21,19 +21,16 @@
 ## Overview
 Project Goal: Stand up a highly optimised, secure, and extensible local AI platform for private knowledge management and public-facing applications.
 
-## **Architecture: Key Components**
-* **Proxmox VE** with hardware passthrough (BIOS/host config)
-* **Private AI VM** (Ollama \+ Qwen 2.5 \+ Qdrant, GPU-enabled)
-* **Public AI LXC** (Ollama \+ Mistral \+ ChromaDB, CPU-optimized)
-* **Dev/monitor LXC(s)** (JupyterLab, Prometheus, Grafana for observability)
-* **Security**: Isolated networks, firewall, monitoring, regular updates/backups 
+## **Architecture Stack**
 > Architecture highlights: GPU passthrough, RAG pipelines, full-stack monitoring, and modular security.
 
+> (Table & Reasoning)[\] \
 > _*Diagram: (will add as soon as ready)*_
 
 ---
 
 ## Getting Started: Custom Hardware Build
+<!--
 > A core part of the decision maaking towards this system was remaining under a $AUD 2400 budget whilst having a configuration that delivers good local AI capabilities \& performance (aiming at 50-70+ tokens/second) while maintaining complete data privacy and requiring minimal maintenance overhead. The component choices therefore represent aiming to achieve the optimal balance of privacy, performance, scalability and operational simplicity. 
 
  - 1 X [Gigabyte B760 GAMING](https://www.gigabyte.com/Motherboard/B760-GAMING-X-DDR4-rev-10) X AX MB, B760, 4x DDR5, 3x PCI-E 4.0/3.0 x16, 3x M.2, 4x SATA3, 2x USB 3.2, 1x USB-C 3.2, DisplayPort 1.2, HDMI 2.0, ATX, WIFI 6E
@@ -44,7 +41,7 @@ Project Goal: Stand up a highly optimised, secure, and extensible local AI platf
  - 1 X [MSI GeForce RTX 3060 VENTUS 2X 12G OC](https://www.msi.com/Graphics-Card/GeForce-RTX-3060-VENTUS-2X-12G-OC) (Boost: 1807MHz), 12GB GDDR6 (15000MHz), PCI-E 4.0, 3x DisplayPort 1.4a, 1x HDMI 2.1, Vented Backplate, TORX Fan
 
 > **Begin at [`/docs/host-setup.md`](/docs/host-setup.md)** for the physical-to-virtualisation platform configurations.
-
+--> TBD [Currently in Flux]
 ---
 
 ## Proposed Implementation Steps & Milestones

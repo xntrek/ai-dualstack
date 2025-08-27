@@ -2,8 +2,13 @@
 
 Welcome! This map is your guide to the DualStack AI Repo—helping you (and stakeholders, collaborators, or learners) find and navigate all key architecture, implementation, and learning assets.
 
+
 ## Section Index
 
+- [A00 | State of AI, 2025](A00_State_of_AI_2025.md)  
+
+
+<!--
 - [A0 Executive Brief](A0_Executive-Brief.md)  
 - [A1 AI Fundamentals: Today](A1_AI-Fundamentals-Today.md)  
 - [A2 Architecture Overview](A2_Architecture-Overview.md)  
@@ -28,7 +33,7 @@ Welcome! This map is your guide to the DualStack AI Repo—helping you (and stak
     - **Compliance/Security:** A6, A7
 4. **Templates & Checklists:** For delivery, validation, and review
 
----
+-->
 
 ## Quick Links
 
