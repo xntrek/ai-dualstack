@@ -1,10 +1,10 @@
 # ai-dualstack
 
-**12-week AI Practitioner Playbook – from consumer to self-hosted solution**
+**A 12-week AI Practitioner Playbook – from consumer to self-hosted solution**
 
 > *From infrastructure to AI application development and RAG pipeline integration, modularised for week-by-week learning and future-proof skills development.*
 >
-> GOAL: Build, optimise, and master my own dual-AI system — a private “Second Brain” & public AI deployment — using Proxmox, GPU passthrough, Ollama, Qwen, Mistral, vector databases, and a robust dev stack.  
+> GOAL: Build, optimise, and master my own dual-AI system — a <kbd>private</kbd> “Second Brain” & <kbd>public</kbd> AI deployment — using Proxmox, GPU passthrough, Ollama, Qwen, Mistral, vector databases, and a robust dev stack.  
 >  
 
 
@@ -24,7 +24,7 @@ Project Goal: Stand up a highly optimised, secure, and extensible local AI platf
 ## **Architecture Stack**
 > Architecture highlights: GPU passthrough, RAG pipelines, full-stack monitoring, and modular security.
 
-> (Table & Reasoning)[\] \
+> [Table & Reasoning](/docs/ai-stack.md) \
 > _*Diagram: (will add as soon as ready)*_
 
 ---

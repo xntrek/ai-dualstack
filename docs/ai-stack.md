@@ -2,22 +2,68 @@
 
 ## **AI Hub Technology Stack**
 
-| **_Function Category_** | **Common Use Cases** | **Open Source Tools & Frameworks** | **_AI Hub Choice_** | **Reasoning** |
-|---|---|---|---|---|
-| _Platform & Infrastructure_ | Virtual environments, container orchestration, resource management | Proxmox, Docker, Kubernetes, LXC | _Proxmox VE (Hypervisor)<br>Docker Compose (Container orchestration)_ | Perfect for dual-environment isolation with dedicated GPU allocation |
-| _Base Models_ | Text generation, multimodal AI, specialized tasks | Llama 3.2, Qwen 2.5, Mistral, Gemma, Whisper, LLaVA | _Qwen 2.5 14B/32B (Private reasoning)<br>Mistral 7B (Public lightweight)_ | Qwen offers better multilingual + reasoning; Mistral for efficient public serving |
-| _Model Deployment_ | Serving LLMs, API endpoints, model lifecycle | Ollama, vLLM, TensorRT-LLM, TorchServe | _Ollama (Primary runtime)<br>vLLM (High-performance inference)_ | Ollama for simplicity; vLLM for production-grade performance when needed |
-| _Model Management_ | Prompt engineering, workflow orchestration, model ops | LangChain, LangFlow, Semantic Kernel | _LangChain (Core orchestration)<br>LangFlow (Visual prototyping)_ | LangChain for enterprise skills; LangFlow for rapid experimentation |
-| _Vector Databases_ | Semantic search, embeddings storage, similarity matching | Chroma, Qdrant, Weaviate, Milvus | _Chroma (Private environment)<br>Qdrant (Public environment)_ | Chroma for simplicity; Qdrant for production features and metadata filtering |
-| _Graph Knowledge Bases_ | Relationship mapping, knowledge graphs, memory | Neo4j, GraphRAG, NetworkX, Zep | _Neo4j Community (Graph database)<br>Zep (Conversational memory)_ | Neo4j for complex relationships; Zep for session management |
-| _Document Processing_ | OCR, PDF parsing, data extraction | Unstructured.io, LlamaParse, PyPDF2, Tesseract | _Unstructured.io (Primary)<br>LlamaParse (LlamaIndex integration)_ | Unstructured.io for comprehensive processing; LlamaParse for better LLM integration |
-| _RAG Engines_ | Retrieval-augmented generation, document Q&A | LlamaIndex, Haystack, LangChain RAG | _LlamaIndex (Document-centric RAG)<br>LangChain RAG (Complex pipelines)_ | LlamaIndex excels at document ingestion; LangChain for advanced orchestration  |
-| _LLM Frameworks_ | Fine-tuning, prompt engineering, model training | HuggingFace Transformers, Unsloth, LoRA | _HuggingFace Transformers (Core)<br>Unsloth (Efficient fine-tuning)_ | HF for ecosystem compatibility; Unsloth for resource-efficient training |
-| _AI Agent Frameworks_ | Multi-step reasoning, autonomous workflows | CrewAI, AutoGen, LangGraph, OpenAI Swarm | _CrewAI (Multi-agent orchestration)<br>LangGraph (Complex workflows)_ | CrewAI for team-based agents; LangGraph for precise workflow control |
-| _Data Platforms_ | ETL, workflow automation, data orchestration | Apache Airflow, Prefect, dbt, DuckDB | _DuckDB (Analytics)<br>Prefect (Workflow orchestration)_ | DuckDB for local analytics; Prefect for modern data workflows |
-| _Model Evaluation_ | Performance tracking, drift detection, debugging | Langfuse, Phoenix (Arize), RAGAS, TruLens | _Langfuse (LLM observability)<br>RAGAS (RAG evaluation)_ | Langfuse for comprehensive tracking; RAGAS for RAG-specific metrics |
-| _Development Environment_ | IDEs, code assistance, debugging | VS Code, Cursor, Windsurf, JupyterLab | _Cursor (AI-enhanced coding)<br>JupyterLab (Experimentation)_ | Cursor for AI-assisted development; Jupyter for interactive analysis |
-| _Web Frameworks_ | APIs, UIs, rapid prototyping | FastAPI, Streamlit, Gradio, Django | _FastAPI (Production APIs)<br>Streamlit (Rapid prototyping)_ | FastAPI for robust APIs; Streamlit for quick demo interfaces |
-| _Authentication & Security_ | Multi-tenant auth, API security | Keycloak, Auth0, OAuth2, JWT | _Keycloak (Open source IAM)<br>OAuth2/JWT (API security)_ | Keycloak for enterprise-grade auth; OAuth2 for API protection |
-| _Monitoring & Observability_ | System monitoring, logging, alerting | Prometheus, Grafana, ELK Stack | _Prometheus + Grafana (Metrics)<br>Docker logging (Container logs)_ | Prometheus/Grafana for comprehensive monitoring |
-| _Storage & Backup_ | File storage, backup, synchronization | MinIO, Rclone, Restic, Tresorit | _MinIO (S3-compatible storage)<br>Rclone (Cloud sync)_ | MinIO for local object storage; Rclone for cloud integration |
+| Function Category | Common Use Cases | Open Source Tools & Frameworks | AI Hub Choice | Reasoning | Priority |
+|---|---|---|---|---|---|
+| Platform & Infrastructure | Virtual environments, container orchestration, resource management | Proxmox, Docker, Kubernetes, LXC | Proxmox VE (Hypervisor)<br>Docker Compose (Container orchestration) | Perfect for dual-environment isolation with dedicated GPU allocation | Tier 1 |
+| Base Models | Text generation, multimodal AI, specialized tasks | Llama 3.2, Qwen 2.5, Mistral, Gemma, Whisper, LLaVA | Qwen 2.5 14B/32B (Private reasoning)<br>Mistral 7B (Public lightweight) | Qwen offers better multilingual + reasoning; Mistral for efficient public serving | Tier 1 |
+| Model Deployment | Serving LLMs, API endpoints, model lifecycle | Ollama, vLLM, TensorRT-LLM, TorchServe | Ollama (Primary runtime)<br>vLLM (High-performance inference) | Ollama for simplicity; vLLM for production-grade performance when needed | Tier 1 |
+| Database Layer | Structured data, user sessions, audit logs, caching | PostgreSQL, MySQL, Redis, MongoDB | PostgreSQL (Relational data)<br>Redis (Cache + sessions) | PostgreSQL for multi-tenant data; Redis for performance and session management | Tier 1 |
+| Model Management | Prompt engineering, workflow orchestration, model ops | LangChain, LangFlow, Semantic Kernel | LangChain (Core orchestration)<br>LangFlow (Visual prototyping) | LangChain for enterprise skills; LangFlow for rapid experimentation | Tier 1 |
+| Vector Databases | Semantic search, embeddings storage, similarity matching | Chroma, Qdrant, Weaviate, Milvus | Chroma (Private environment)<br>Qdrant (Public environment) | Chroma for simplicity; Qdrant for production features and metadata filtering | Tier 1 |
+| Security & Secrets | API keys, certificates, secrets management | Vault, Bitwarden, SOPS, Age | Vault (Secrets management)<br>OAuth2/JWT (API security) | Vault for enterprise-grade secrets; OAuth2 for API protection | Tier 1 |
+| Backup & Recovery | Data protection, disaster recovery, snapshots | Restic, Borg, Duplicity, Proxmox Backup | Restic (Incremental backups)<br>Proxmox Backup Server (VM snapshots) | Restic for file-level protection; Proxmox for infrastructure snapshots | Tier 1 |
+| Web Frameworks | APIs, UIs, rapid prototyping | FastAPI, Streamlit, Gradio, Django | FastAPI (Production APIs)<br>Streamlit (Rapid prototyping) | FastAPI for robust APIs; Streamlit for quick demo interfaces | Tier 1 |
+| RAG Engines | Retrieval-augmented generation, document Q&A | LlamaIndex, Haystack, LangChain RAG | LlamaIndex (Document-centric RAG)<br>LangChain RAG (Complex pipelines) | LlamaIndex excels at document ingestion; LangChain for advanced orchestration | Tier 2 |
+| Document Processing | OCR, PDF parsing, data extraction | Unstructured.io, LlamaParse, PyPDF2, Tesseract | Unstructured.io (Primary)<br>LlamaParse (LlamaIndex integration) | Unstructured.io for comprehensive processing; LlamaParse for better LLM integration | Tier 2 |
+| Message Queue | Background tasks, async processing, job queues | Redis/Celery, RabbitMQ, Apache Kafka | Redis + Celery (Async tasks) | Essential for async AI processing and background model operations | Tier 2 |
+| LLM Frameworks | Fine-tuning, prompt engineering, model training | HuggingFace Transformers, Unsloth, LoRA | HuggingFace Transformers (Core)<br>Unsloth (Efficient fine-tuning) | HF for ecosystem compatibility; Unsloth for resource-efficient training | Tier 2 |
+| Model Evaluation | Performance tracking, drift detection, debugging | Langfuse, Phoenix (Arize), RAGAS, TruLens | Langfuse (LLM observability)<br>RAGAS (RAG evaluation) | Langfuse for comprehensive tracking; RAGAS for RAG-specific metrics | Tier 2 |
+| Monitoring & Observability | System monitoring, logging, alerting | Prometheus, Grafana, ELK Stack, Loki | Prometheus + Grafana (Metrics)<br>Grafana + Loki + Promtail (Logging) | Unified monitoring stack with AI-specific observability | Tier 2 |
+| Development Environment | IDEs, code assistance, debugging | VS Code, Cursor, Windsurf, JupyterLab | Cursor (AI-enhanced coding)<br>JupyterLab (Experimentation) | Cursor for AI-assisted development; Jupyter for interactive analysis | Tier 2 |
+| CI/CD & Config | Version control, automation, deployment | GitLab, Gitea, Jenkins, Ansible | Gitea (Git hosting)<br>Ansible (Configuration management) | Gitea for lightweight self-hosted Git; Ansible for infrastructure automation | Tier 2 |
+| Data Platforms | ETL, workflow automation, data orchestration | Apache Airflow, Prefect, dbt, DuckDB | DuckDB (Analytics)<br>Prefect (Workflow orchestration) | DuckDB for local analytics; Prefect for modern data workflows | Tier 2 |
+| Authentication & Identity | Multi-tenant auth, user management, SSO | Keycloak, Auth0, OAuth2, LDAP | Keycloak (Open source IAM)<br>OAuth2/OIDC (Modern protocols) | Keycloak for enterprise-grade auth with modern protocol support | Tier 2 |
+| AI Agent Frameworks | Multi-step reasoning, autonomous workflows | CrewAI, AutoGen, LangGraph, OpenAI Swarm | CrewAI (Multi-agent orchestration)<br>LangGraph (Complex workflows) | CrewAI for team-based agents; LangGraph for precise workflow control | Tier 3 |
+| Graph Knowledge Bases | Relationship mapping, knowledge graphs, memory | Neo4j, GraphRAG, NetworkX, Zep | Neo4j Community (Graph database)<br>Zep (Conversational memory) | Neo4j for complex relationships; Zep for session management | Tier 3 |
+| Storage & File Management | Object storage, file sync, cloud integration | MinIO, Rclone, AWS S3, Tresorit | MinIO (S3-compatible storage)<br>Rclone (Cloud sync) | MinIO for local object storage; Rclone for secure cloud integration | Tier 3 |
+| SSL & Certificate Management | Automated SSL, certificate lifecycle | Cert-Manager, Let's Encrypt, ACME | Cert-Manager + Let's Encrypt | Automated SSL management for production deployments | Tier 3 |
+
+---
+```mermaid
+flowchart TB
+    %% Left: Private (blue/green), Right: Public (orange/red)
+    %% Using subgraphs for swimlanes
+
+    subgraph Private["Private Environment"]
+        direction TB
+        P_UI["User Interface (MacBook, Samsung)"]
+        P_APP["PrivateGPT / Personal Assistant"]
+        P_AI["AI Services (LangChain, CrewAI, LlamaIndex)"]
+        P_DATA["Data: Chroma, Neo4j, Postgres, Redis"]
+        P_CMP["Models: Qwen 2.5 + RTX 5090"]
+        P_INFRA["Proxmox + Docker + NVMe / MinIO"]
+        P_OPS["Ops: Monitoring, Vault, Gitea, Backup"]
+    end
+
+    subgraph Public["Public Environment"]
+        direction TB
+        PUB_UI["User Interface (Web/Mobile)"]
+        PUB_APP["POC Platform / ACAT ChatBot"]
+        PUB_AI["AI Services (LangFlow, LangGraph, Haystack)"]
+        PUB_DATA["Data: Qdrant, Neo4j, Postgres, Redis"]
+        PUB_CMP["Models: Mistral 7B + RTX 3060"]
+        PUB_INFRA["Proxmox + Docker + NVMe / MinIO"]
+        PUB_OPS["Ops: Monitoring, Keycloak, Ansible, Backup"]
+    end
+
+    %% Connections (simplified top to bottom)
+    P_UI --> P_APP --> P_AI --> P_DATA --> P_CMP --> P_INFRA --> P_OPS
+    PUB_UI --> PUB_APP --> PUB_AI --> PUB_DATA --> PUB_CMP --> PUB_INFRA --> PUB_OPS
+
+    %% STYLE: Private blue/green, Public orange/red
+    classDef private fill:#e0f7fa,stroke:#00796b,stroke-width:2px;
+    classDef public fill:#ffebee,stroke:#c62828,stroke-width:2px;
+
+    class P_UI,P_APP,P_AI,P_DATA,P_CMP,P_INFRA,P_OPS private
+    class PUB_UI,PUB_APP,PUB_AI,PUB_DATA,PUB_CMP,PUB_INFRA,PUB_OPS public
+```
