@@ -27,6 +27,83 @@
 | Graph Knowledge Bases | Relationship mapping, knowledge graphs, memory | Neo4j, GraphRAG, NetworkX, Zep | Neo4j Community (Graph database)<br>Zep (Conversational memory) | Neo4j for complex relationships; Zep for session management | Tier 3 |
 | Storage & File Management | Object storage, file sync, cloud integration | MinIO, Rclone, AWS S3, Tresorit | MinIO (S3-compatible storage)<br>Rclone (Cloud sync) | MinIO for local object storage; Rclone for secure cloud integration | Tier 3 |
 | SSL & Certificate Management | Automated SSL, certificate lifecycle | Cert-Manager, Let's Encrypt, ACME | Cert-Manager + Let's Encrypt | Automated SSL management for production deployments | Tier 3 |
+---
+```mermaid
+flowchart TB
+    %% Direction top to bottom
+    %% STYLE: Left = Private (blue/green), Right = Public (orange/red)
+
+    %% USER INTERFACE LAYER
+    subgraph UI["User Interface Layer"]
+        U1["Web & Mobile Apps"]
+        U2["Development IDEs (Cursor, JupyterLab)"]
+    end
+
+    %% APPLICATION LAYER
+    subgraph APP["Application Layer"]
+        A1["PrivateGPT / Personal AI Assistant"]
+        A2["POC Platform / ACAT ChatBot"]
+    end
+
+    %% AI/ML SERVICE LAYER
+    subgraph AI["AI/ML Services"]
+        S1["Orchestration (LangChain / LangFlow)"]
+        S2["Agents (CrewAI / LangGraph)"]
+        S3["RAG Engines (LlamaIndex / Haystack)"]
+    end
+
+    %% DATA & KNOWLEDGE LAYER
+    subgraph DATA["Data & Knowledge Layer"]
+        D1["Vector DBs (Chroma / Qdrant)"]
+        D2["Graph DB (Neo4j)"]
+        D3["Relational DB (Postgres)"]
+        D4["Cache (Redis)"]
+    end
+
+    %% COMPUTE & MODELS LAYER
+    subgraph CMP["Compute & Models"]
+        M1["Private: Qwen 2.5 + RTX 5090"]
+        M2["Public: Mistral 7B + RTX 3060"]
+    end
+
+    %% INFRASTRUCTURE LAYER
+    subgraph INFRA["Infrastructure Layer"]
+        I1["Proxmox VE + Docker"]
+        I2["Storage (NVMe SSDs / MinIO)"]
+    end
+
+    %% OPS & SECURITY LAYER
+    subgraph OPS["Operations & Security"]
+        O1["Monitoring (Prometheus / Grafana / Loki)"]
+        O2["Security (Vault / Keycloak)"]
+        O3["CI/CD (Gitea / Ansible)"]
+        O4["Backup (Restic / PBS)"]
+    end
+
+    %% FLOW CONNECTIONS
+    U1 --> A1
+    U1 --> A2
+    U2 --> A1
+    U2 --> A2
+
+    A1 --> S1
+    A2 --> S1
+
+    S1 --> S2
+    S2 --> S3
+    S3 --> D1
+    S3 --> D2
+    D1 --> CMP
+    D2 --> CMP
+    D3 --> CMP
+    D4 --> CMP
+
+    CMP --> I1
+    CMP --> I2
+    I1 --> OPS
+    I2 --> OPS
+
+```
 
 ---
 ```mermaid
