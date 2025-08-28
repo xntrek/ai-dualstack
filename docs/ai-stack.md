@@ -29,118 +29,185 @@
 | SSL & Certificate Management | Automated SSL, certificate lifecycle | Cert-Manager, Let's Encrypt, ACME | Cert-Manager + Let's Encrypt | Automated SSL management for production deployments | Tier 3 |
 ---
 ```mermaid
-flowchart TB
-    %% Direction top to bottom
-    %% STYLE: Left = Private (blue/green), Right = Public (orange/red)
-
-    %% USER INTERFACE LAYER
-    subgraph UI["User Interface Layer"]
-        U1["Web & Mobile Apps"]
-        U2["Development IDEs (Cursor, JupyterLab)"]
-    end
-
-    %% APPLICATION LAYER
-    subgraph APP["Application Layer"]
-        A1["PrivateGPT / Personal AI Assistant"]
-        A2["POC Platform / ACAT ChatBot"]
-    end
-
-    %% AI/ML SERVICE LAYER
-    subgraph AI["AI/ML Services"]
-        S1["Orchestration (LangChain / LangFlow)"]
-        S2["Agents (CrewAI / LangGraph)"]
-        S3["RAG Engines (LlamaIndex / Haystack)"]
-    end
-
-    %% DATA & KNOWLEDGE LAYER
-    subgraph DATA["Data & Knowledge Layer"]
-        D1["Vector DBs (Chroma / Qdrant)"]
-        D2["Graph DB (Neo4j)"]
-        D3["Relational DB (Postgres)"]
-        D4["Cache (Redis)"]
-    end
-
-    %% COMPUTE & MODELS LAYER
-    subgraph CMP["Compute & Models"]
-        M1["Private: Qwen 2.5 + RTX 5090"]
-        M2["Public: Mistral 7B + RTX 3060"]
-    end
-
-    %% INFRASTRUCTURE LAYER
-    subgraph INFRA["Infrastructure Layer"]
-        I1["Proxmox VE + Docker"]
-        I2["Storage (NVMe SSDs / MinIO)"]
-    end
-
-    %% OPS & SECURITY LAYER
-    subgraph OPS["Operations & Security"]
-        O1["Monitoring (Prometheus / Grafana / Loki)"]
-        O2["Security (Vault / Keycloak)"]
-        O3["CI/CD (Gitea / Ansible)"]
-        O4["Backup (Restic / PBS)"]
-    end
-
-    %% FLOW CONNECTIONS
-    U1 --> A1
-    U1 --> A2
-    U2 --> A1
-    U2 --> A2
-
-    A1 --> S1
-    A2 --> S1
-
-    S1 --> S2
-    S2 --> S3
-    S3 --> D1
-    S3 --> D2
-    D1 --> CMP
-    D2 --> CMP
-    D3 --> CMP
-    D4 --> CMP
-
-    CMP --> I1
-    CMP --> I2
-    I1 --> OPS
-    I2 --> OPS
-
-```
-
 ---
-```mermaid
+title: AI Hub Logical Architecture Stack
+displayMode: compact
+config:
+    look: handDrawn
+    handDrawnSeed: 123
+    theme: neutral
+---
+%%{init: {
+  "theme": "dark",
+  "themeVariables": {
+    "fontFamily": "monospace"
+  },
+  "layout": "dagre",
+  "config": {
+    "look": "classic"
+  }
+}}%%
 flowchart TB
-    %% Left: Private (blue/green), Right: Public (orange/red)
-    %% Using subgraphs for swimlanes
-
-    subgraph Private["Private Environment"]
+    %% === USERS ===
+    subgraph Users["User Layer"]
         direction TB
-        P_UI["User Interface (MacBook, Samsung)"]
-        P_APP["PrivateGPT / Personal Assistant"]
-        P_AI["AI Services (LangChain, CrewAI, LlamaIndex)"]
-        P_DATA["Data: Chroma, Neo4j, Postgres, Redis"]
-        P_CMP["Models: Qwen 2.5 + RTX 5090"]
-        P_INFRA["Proxmox + Docker + NVMe / MinIO"]
-        P_OPS["Ops: Monitoring, Vault, Gitea, Backup"]
+        U1["Computing Devices"]
+        U2["Personal Devices"]
+        U3["Web Browsers"]
     end
 
-    subgraph Public["Public Environment"]
+    %% === UI LAYER ===
+    subgraph UI["User Interface Layer"]
         direction TB
-        PUB_UI["User Interface (Web/Mobile)"]
-        PUB_APP["POC Platform / ACAT ChatBot"]
-        PUB_AI["AI Services (LangFlow, LangGraph, Haystack)"]
-        PUB_DATA["Data: Qdrant, Neo4j, Postgres, Redis"]
-        PUB_CMP["Models: Mistral 7B + RTX 3060"]
-        PUB_INFRA["Proxmox + Docker + NVMe / MinIO"]
-        PUB_OPS["Ops: Monitoring, Keycloak, Ansible, Backup"]
+        UI1["Web & Mobile Apps"]
+        UI2["Development IDEs"]
+        UI3["SSH/VPN"]
     end
 
-    %% Connections (simplified top to bottom)
-    P_UI --> P_APP --> P_AI --> P_DATA --> P_CMP --> P_INFRA --> P_OPS
-    PUB_UI --> PUB_APP --> PUB_AI --> PUB_DATA --> PUB_CMP --> PUB_INFRA --> PUB_OPS
+    %% === APPLICATION LAYER ===
+    subgraph APPS["Application Layer"]
+        subgraph PrivateApp["Private Environment"]
+            direction TB
+            P1["PrivateGPT"]
+            P2["Personal AI Assistant"]
+            P3["Document Analysis"]
+        end
 
-    %% STYLE: Private blue/green, Public orange/red
-    classDef private fill:#e0f7fa,stroke:#00796b,stroke-width:2px;
-    classDef public fill:#ffebee,stroke:#c62828,stroke-width:2px;
+        subgraph PublicApp["Public Environment"]
+            direction TB
+            PU1["Agentic ChatBot"]
+            PU2["Multi-tenant Platform"]
+            PU3["POC Applications"]
+        end
+    end
 
-    class P_UI,P_APP,P_AI,P_DATA,P_CMP,P_INFRA,P_OPS private
-    class PUB_UI,PUB_APP,PUB_AI,PUB_DATA,PUB_CMP,PUB_INFRA,PUB_OPS public
+    %% === COMPUTE ===
+    subgraph Compute["Compute & Models"]
+        direction TB
+        M2["Public: Mistral 7B + RTX 3060"]
+        M1["Private: Qwen 2.5 + RTX 5090"]
+    end
+
+    %% === AI SERVICES ===
+    subgraph AIServices["AI Services Layer"]
+        direction TB
+        AI1["LangChain Orchestration"]
+        AI2["Ollama Runtime"]
+        AI3["CrewAI Agents"]
+        AI4["LlamaIndex RAG"]
+    end
+
+    %% === DATA LAYER ===
+    subgraph Data["Data Layer"]
+        direction TB
+        D1["Chroma Vector DB"]
+        D2["Qdrant Vector DB"]
+        D3["PostgreSQL"]
+        D4["Redis Cache"]
+    end
+
+    %% === VIRTUAL ENVIRONMENT ===
+    subgraph PVE["PROXMOX VE"]
+        subgraph LXC["Linux Containers"]
+            LX1["Relational DB LXC"]
+            LX2["Cache LXC"]
+            LX3["Security LXC"]
+            LX4["CI/CD LXC"]
+            LX5["Monitoring LXC"]
+            LX6["Backup LXC"]
+        end
+        subgraph VM["Virtual Machines"]
+            subgraph VM1["Ubuntu VM 1"]
+                DA1["Dockerised Services"]
+            end
+            subgraph VM2["Ubuntu VM 2"]
+                DA2["Dockerised Services"]
+            end
+        end
+    end
+
+    %% === INFRASTRUCTURE ===
+    subgraph Infra["Server"]
+        subgraph GPU["GPU"]
+        direction TB
+            GPU1@{ label: "5090" }
+            GPU2["3060"]
+        end
+        subgraph CPU["CPU"]
+        direction TB
+            cpu["Intel Core Ultra 9 285K"]
+            ram["128GB 6000MHz (4x32GB) DDR5"]
+        end
+        subgraph DISK["STORAGE"]
+        direction TB
+            d1["Storage: NVMe Mirror 1"]
+            d2["Storage: NVMe Mirror 2"]
+        end
+        subgraph NW["NETWORK"]
+        direction LR
+            nw1["Internet"]
+            nw2(("LAN"))
+        end
+    end
+
+  %% Legend
+  subgraph Legend[Legend]
+  direction TB
+    L1["Private Environment"]:::private
+    L2["Public Environment"]:::public
+  end
+
+    %% FLOWS
+        Users ~~~ UI 
+        	U3 ~~~ UI1
+            U1 ~~~ UI2
+            U1 ~~~ UI3
+        UI1 --> PublicApp
+        UI3 --> PrivateApp
+        PublicApp --> M2 ~~~ AIServices ~~~ D2 --> VM2 --> GPU2 
+            M2 ~~~ D2
+            M1 ~~~ D1
+        PrivateApp --> M1 ~~~ AIServices ~~~ D1 --> VM1 --> GPU1 
+        D3 --> LX1 ~~~ LX4 ~~~ LX3
+        D4 --> LX2 ~~~ LX5 ~~~ LX6
+        LX3 ~~~ d1
+        LX6 ~~~ d2
+        VM ~~~ GPU
+        DISK ~~~ CPU
+        GPU ~~~ CPU
+        Infra ~~~ Legend
+
+    GPU1@{ shape: "display", label: "RTX 5090" }
+    GPU2@{ shape: "display", label: "RTX 3060" }
+    d1@{ shape: disk}
+    d2@{ shape: disk}
+    nw1@{ shape: dbl-circ}
+
+    %% === STYLING ===
+    classDef private fill:#D0EECF,stroke:#00663F,stroke-width:2px;
+    classDef public  fill:#FFE5E0,stroke:#990000,stroke-width:2px;
+    classDef legend  fill:#F0F0F0,stroke:#AAAAAA,stroke-width:1px;
+
+    class P1,P2,P3,M1,D1,GPU1,VM1 private
+    class PU1,PU2,PU3,M2,D2,GPU2,VM2 public
+
+	style Infra stroke-width:2px,stroke:#000000,fill:#737373
+	style DISK stroke-width:2px,stroke-dasharray:5 5,fill:#545454
+	style GPU stroke-width:0.5px,stroke-dasharray:5 5,fill:#545454
+	style NW stroke-width:1px,stroke-dasharray:5 5,fill:#545454
+	style PVE fill:#545454
+	style LXC stroke-width:0.5px,stroke-dasharray:5 5,stroke:#FFFFFF,fill:#737373
+	style VM stroke-width:0.5px,stroke-dasharray:5 5,stroke:#FFFFFF,fill:#737373
+	style Data fill:#737373
+	style AIServices fill:#737373
+	style APPS fill:#545454
+	style PrivateApp fill:#737373
+	style PublicApp fill:#737373
+	style UI fill:#737373
+	style Users fill:#737373
+	style Compute fill:#545454
+	style Legend stroke-width:1px,stroke-dasharray:5 5,fill:#000000
+	style d1 fill:#000000
+	style GPU1 color:#7ED957,stroke-width:2px,stroke:#00BF63
+	style GPU2 color:#FF3131,stroke-width:2px,stroke:#FF3131
 ```
