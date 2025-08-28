@@ -24,8 +24,209 @@ Project Goal: Stand up a highly optimised, secure, and extensible local AI platf
 ## **Architecture Stack**
 > Architecture highlights: GPU passthrough, RAG pipelines, full-stack monitoring, and modular security.
 
-> [Table & Reasoning](/docs/ai-stack.md) \
-> _*Diagram: (will add as soon as ready)*_
+<details><summary>Logical Stack Diagram</summary>
+
+```mermaid
+---
+title: Logical Architecture Stack
+config:
+    displayMode: compact
+    look: neo
+    theme: dark
+    themeVariables:
+        fontFamily:	Courier New, monospace, Lucida Console, monospace;
+        fontSize: 16;
+    layout: dagre
+---
+flowchart TB
+    %% === USERS ===
+    subgraph Users["User Layer"]
+        direction TB
+        U1["Computing Devices"]
+        U2["Personal Devices"]
+        U3["Web Browsers"]
+    end
+
+    %% === UI LAYER ===
+    subgraph UI["User Interface Layer"]
+        direction TB
+        UI1["Web & Mobile Apps"]
+        UI2["Development IDEs"]
+        UI3["SSH/VPN"]
+    end
+
+    %% === APPLICATION LAYER ===
+    subgraph APPS["Application Layer"]
+        subgraph PrivateApp["Private Environment"]
+            direction TB
+            P1["PrivateGPT"]
+            P2["Personal AI Assistant"]
+            P3["Document Analysis"]
+        end
+
+        subgraph PublicApp["Public Environment"]
+            direction TB
+            PU1["Agentic ChatBot"]
+            PU2["Multi-tenant Platform"]
+            PU3["POC Applications"]
+        end
+    end
+
+    %% === COMPUTE ===
+    subgraph Compute["Compute & Models"]
+        direction TB
+        M2["Public: Mistral 7B [RTX 3060]"]
+        M1["Private: Qwen 2.5  [RTX 5090]"]
+    end
+
+    %% === AI SERVICES ===
+    subgraph AIServices["AI Services Layer"]
+        direction TB
+        AI1["LangChain Orchestration"]
+        AI2["Ollama Runtime"]
+        AI3["CrewAI Agents"]
+        AI4["LlamaIndex RAG"]
+    end
+
+    %% === DATA LAYER ===
+    subgraph Data["Data Layer"]
+        direction TB
+        D1["Chroma Vector DB"]
+        D2["Qdrant Vector DB"]
+        D3["PostgreSQL"]
+        D4["Redis Cache"]
+    end
+
+    %% === VIRTUAL ENVIRONMENT ===
+    subgraph PVE["PROXMOX VE"]
+        subgraph LXC["Linux Containers"]
+            LX1["Relational DB LXC"]
+            LX2["Cache LXC"]
+            LX3["Security LXC"]
+            LX4["CI/CD LXC"]
+            LX5["Monitoring LXC"]
+            LX6["Backup LXC"]
+        end
+        subgraph VM["Virtual Machines"]
+            subgraph VM1["Ubuntu VM 1"]
+                DA1["Dockerised Services"]
+            end
+            subgraph VM2["Ubuntu VM 2"]
+                DA2["Dockerised Services"]
+            end
+        end
+    end
+
+    %% === INFRASTRUCTURE ===
+    subgraph Infra["Server"]
+        subgraph GPU["GPU"]
+        direction TB
+            GPU1@{ label: "5090" }
+            GPU2["3060"]
+        end
+        subgraph CPU["CPU"]
+        direction TB
+            cpu["Intel Core Ultra 9 285K"]
+            ram["128GB 6000MHz (4x32GB) DDR5"]
+        end
+        subgraph DISK["STORAGE"]
+        direction TB
+            d1["Storage: NVMe Mirror 1"]
+            d2["Storage: NVMe Mirror 2"]
+        end
+        subgraph NW["NETWORK"]
+        direction LR
+            nw1["Internet"]
+            nw2(("LAN"))
+        end
+    end
+
+  %% Legend
+  subgraph Legend[Legend]
+  direction TB
+    L1["Private Environment"]:::private
+    L2["Public Environment"]:::public
+  end
+
+    %% FLOWS
+        Users ~~~ UI 
+        	U3 ~~~ UI1
+            U1 ~~~ UI2
+            U1 ~~~ UI3
+        UI1 --> PublicApp
+        UI3 --> PrivateApp
+            M2 ~~~ D2
+            M1 ~~~ D1
+        D3 --> LX1 ~~~ LX4 ~~~ LX3
+        D4 --> LX2 ~~~ LX5 ~~~ LX6
+        LX3 ~~~ d1
+        LX6 ~~~ d2
+        PrivateApp --> M1 ~~~ AIServices ~~~ D1 --> VM1 --> GPU1
+        PublicApp --> M2 ~~~ AIServices ~~~ D2 --> VM2 --> GPU2 
+        VM ~~~ GPU
+        DISK ~~~ CPU
+        GPU ~~~ CPU
+        Infra ~~~ Legend
+
+    GPU1@{ shape: "display", label: "RTX 5090" }
+    GPU2@{ shape: "display", label: "RTX 3060" }
+    d1@{ shape: "disk", label: "Storage: NVMe Mirror 1" }
+    d2@{ shape: "disk", label: "Storage: NVMe Mirror 2" }
+    nw1@{ shape: dbl-circ}
+
+    %% === STYLING ===
+    classDef private fill:#D0EECF,stroke:#00663F,stroke-width:2px; 
+    classDef public  fill:#FFE5E0,stroke:#990000,stroke-width:2px;
+    classDef legend  fill:#F0F0F0,stroke:#AAAAAA,stroke-width:1px;
+
+    class P1,P2,P3,M1,D1,GPU1,VM1 private
+    class PU1,PU2,PU3,M2,D2,GPU2,VM2 public
+
+	style Infra stroke-width:2px,stroke:#000000,fill:#737373
+	style DISK stroke-width:2px,stroke-dasharray:5 5,fill:#545454
+	style GPU stroke-width:0.5px,stroke-dasharray:5 5,fill:#545454
+	style NW stroke-width:1px,stroke-dasharray:5 5,fill:#545454
+	style PVE fill:#545454
+	style LXC stroke-width:0.5px,stroke-dasharray:5 5,stroke:#FFFFFF,fill:#737373
+	style VM stroke-width:0.5px,stroke-dasharray:5 5,stroke:#FFFFFF,fill:#737373
+	style Data fill:#737373
+	style AIServices fill:#737373
+	style APPS fill:#545454
+	style PrivateApp fill:#737373
+	style PublicApp fill:#737373
+	style UI fill:#737373
+	style Users fill:#737373
+	style Compute fill:#545454
+	style Legend stroke-width:1px,stroke-dasharray:5 5,fill:#000000
+	style GPU1 color:#7ED957,stroke-width:2px,stroke:#00BF63
+	style GPU2 color:#FF3131,stroke-width:2px,stroke:#FF3131
+	style P1 color:#000000
+	style P2 color:#000000
+	style P3 color:#000000
+	style M1 color:#000000
+	style M2 color:#000000
+	style PU1 color:#000000
+	style PU2 color:#000000
+	style PU3 color:#000000
+	style D1 color:#000000
+	style D2 color:#000000
+	style L1 color:#000000
+	style L2 color:#000000
+	style VM1 color:#000000
+	style VM2 color:#000000
+	style CPU fill:#545454
+	style cpu fill:#D9D9D9,color:#000000
+	style ram color:#000000,fill:#D9D9D9
+	style d1 fill:#000000,color:#FFFFFF
+	style d2 fill:#D9D9D9,color:#000000
+	style nw2 fill:#D0EECF
+	style nw1 color:#FF3131,fill:#FFE5E0
+```
+
+</details>   
+   <br>
+
+> The full [Stack Breakdown](/docs/ai-stack.md) is also available as a table.
 
 ---
 
