@@ -5,7 +5,7 @@
 | Function Category | Common Use Cases | Open Source Tools & Frameworks | AI Hub Choice | Reasoning | Priority |
 |---|---|---|---|---|---|
 | Platform & Infrastructure | Virtual environments, container orchestration, resource management | Proxmox, Docker, Kubernetes, LXC | Proxmox VE (Hypervisor)<br>Docker Compose (Container orchestration) | Perfect for dual-environment isolation with dedicated GPU allocation | Tier 1 |
-| Base Models | Text generation, multimodal AI, specialized tasks | Llama 3.2, Qwen 2.5, Mistral, Gemma, Whisper, LLaVA | Qwen 2.5 14B/32B (Private reasoning)<br>Mistral 7B (Public lightweight) | Qwen offers better multilingual + reasoning; Mistral for efficient public serving | Tier 1 |
+| Base Models | Text generation, multimodal AI, specialised tasks | Llama 3.2, Qwen 2.5, Mistral, Gemma, Whisper, LLaVA | Qwen 2.5 14B/32B (Private reasoning)<br>Mistral 7B (Public lightweight) | Qwen offers better multilingual + reasoning; Mistral for efficient public serving | Tier 1 |
 | Model Deployment | Serving LLMs, API endpoints, model lifecycle | Ollama, vLLM, TensorRT-LLM, TorchServe | Ollama (Primary runtime)<br>vLLM (High-performance inference) | Ollama for simplicity; vLLM for production-grade performance when needed | Tier 1 |
 | Database Layer | Structured data, user sessions, audit logs, caching | PostgreSQL, MySQL, Redis, MongoDB | PostgreSQL (Relational data)<br>Redis (Cache + sessions) | PostgreSQL for multi-tenant data; Redis for performance and session management | Tier 1 |
 | Model Management | Prompt engineering, workflow orchestration, model ops | LangChain, LangFlow, Semantic Kernel | LangChain (Core orchestration)<br>LangFlow (Visual prototyping) | LangChain for enterprise skills; LangFlow for rapid experimentation | Tier 1 |
@@ -28,25 +28,22 @@
 | Storage & File Management | Object storage, file sync, cloud integration | MinIO, Rclone, AWS S3, Tresorit | MinIO (S3-compatible storage)<br>Rclone (Cloud sync) | MinIO for local object storage; Rclone for secure cloud integration | Tier 3 |
 | SSL & Certificate Management | Automated SSL, certificate lifecycle | Cert-Manager, Let's Encrypt, ACME | Cert-Manager + Let's Encrypt | Automated SSL management for production deployments | Tier 3 |
 ---
+<br>
+
+<details><summary>Logical Stack Diagram</summary>
+
 ```mermaid
 ---
-title: AI Hub Logical Architecture Stack
-displayMode: compact
+title: Logical Architecture Stack
 config:
-    look: handDrawn
-    handDrawnSeed: 123
-    theme: neutral
+    displayMode: compact
+    look: neo
+    theme: dark
+    themeVariables:
+        fontFamily:	Courier New, monospace, Lucida Console, monospace;
+        fontSize: 16;
+    layout: dagre
 ---
-%%{init: {
-  "theme": "dark",
-  "themeVariables": {
-    "fontFamily": "monospace"
-  },
-  "layout": "dagre",
-  "config": {
-    "look": "classic"
-  }
-}}%%
 flowchart TB
     %% === USERS ===
     subgraph Users["User Layer"]
@@ -84,8 +81,8 @@ flowchart TB
     %% === COMPUTE ===
     subgraph Compute["Compute & Models"]
         direction TB
-        M2["Public: Mistral 7B + RTX 3060"]
-        M1["Private: Qwen 2.5 + RTX 5090"]
+        M2["Public: Mistral 7B [RTX 3060]"]
+        M1["Private: Qwen 2.5  [RTX 5090]"]
     end
 
     %% === AI SERVICES ===
@@ -164,14 +161,14 @@ flowchart TB
             U1 ~~~ UI3
         UI1 --> PublicApp
         UI3 --> PrivateApp
-        PublicApp --> M2 ~~~ AIServices ~~~ D2 --> VM2 --> GPU2 
             M2 ~~~ D2
             M1 ~~~ D1
-        PrivateApp --> M1 ~~~ AIServices ~~~ D1 --> VM1 --> GPU1 
         D3 --> LX1 ~~~ LX4 ~~~ LX3
         D4 --> LX2 ~~~ LX5 ~~~ LX6
         LX3 ~~~ d1
         LX6 ~~~ d2
+        PrivateApp --> M1 ~~~ AIServices ~~~ D1 --> VM1 --> GPU1
+        PublicApp --> M2 ~~~ AIServices ~~~ D2 --> VM2 --> GPU2 
         VM ~~~ GPU
         DISK ~~~ CPU
         GPU ~~~ CPU
@@ -179,12 +176,12 @@ flowchart TB
 
     GPU1@{ shape: "display", label: "RTX 5090" }
     GPU2@{ shape: "display", label: "RTX 3060" }
-    d1@{ shape: disk}
-    d2@{ shape: disk}
+    d1@{ shape: "disk", label: "Storage: NVMe Mirror 1" }
+    d2@{ shape: "disk", label: "Storage: NVMe Mirror 2" }
     nw1@{ shape: dbl-circ}
 
     %% === STYLING ===
-    classDef private fill:#D0EECF,stroke:#00663F,stroke-width:2px;
+    classDef private fill:#D0EECF,stroke:#00663F,stroke-width:2px; 
     classDef public  fill:#FFE5E0,stroke:#990000,stroke-width:2px;
     classDef legend  fill:#F0F0F0,stroke:#AAAAAA,stroke-width:1px;
 
@@ -207,7 +204,31 @@ flowchart TB
 	style Users fill:#737373
 	style Compute fill:#545454
 	style Legend stroke-width:1px,stroke-dasharray:5 5,fill:#000000
-	style d1 fill:#000000
 	style GPU1 color:#7ED957,stroke-width:2px,stroke:#00BF63
 	style GPU2 color:#FF3131,stroke-width:2px,stroke:#FF3131
+	style P1 color:#000000
+	style P2 color:#000000
+	style P3 color:#000000
+	style M1 color:#000000
+	style M2 color:#000000
+	style PU1 color:#000000
+	style PU2 color:#000000
+	style PU3 color:#000000
+	style D1 color:#000000
+	style D2 color:#000000
+	style L1 color:#000000
+	style L2 color:#000000
+	style VM1 color:#000000
+	style VM2 color:#000000
+	style CPU fill:#545454
+	style cpu fill:#D9D9D9,color:#000000
+	style ram color:#000000,fill:#D9D9D9
+	style d1 fill:#000000,color:#FFFFFF
+	style d2 fill:#D9D9D9,color:#000000
+	style nw2 fill:#D0EECF
+	style nw1 color:#FF3131,fill:#FFE5E0
 ```
+
+
+</details>   
+   <br>
