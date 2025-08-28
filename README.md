@@ -41,7 +41,6 @@ config:
 flowchart TB
     %% === USERS ===
     subgraph Users["User Layer"]
-        direction TB
         U1["Computing Devices"]
         U2["Personal Devices"]
         U3["Web Browsers"]
@@ -49,52 +48,51 @@ flowchart TB
 
     %% === UI LAYER ===
     subgraph UI["User Interface Layer"]
-        direction TB
-        UI1["Web & Mobile Apps"]
-        UI2["Development IDEs"]
-        UI3["SSH/VPN"]
+        UI1@{ shape: "trap-t", label: "Web & Mobile Apps" }
+        UI2@{ shape: "trap-t", label: "Development IDEs" }
+        UI3@{ shape: "trap-t", label: "SSH/VPN" }
     end
 
     %% === APPLICATION LAYER ===
     subgraph APPS["Application Layer"]
         subgraph PrivateApp["Private Environment"]
-            direction TB
-            P1["PrivateGPT"]
-            P2["Personal AI Assistant"]
-            P3["Document Analysis"]
+            direction BT
+            P1@{ shape: "stadium", label: "PrivateGPT" }
+            P2@{ shape: "stadium", label: "Personal AI Assistant" }
+            P3@{ shape: "stadium", label: "Document Analysis" }
         end
 
         subgraph PublicApp["Public Environment"]
             direction TB
-            PU1["Agentic ChatBot"]
-            PU2["Multi-tenant Platform"]
-            PU3["POC Applications"]
+            PU1@{ shape: "stadium", label: "Agentic ChatBot" }
+            PU2@{ shape: "stadium", label: "Multi-tenant Platform" }
+            PU3@{ shape: "stadium", label: "POC Applications" }
         end
     end
 
     %% === COMPUTE ===
     subgraph Compute["Compute & Models"]
         direction TB
-        M2["Public: Mistral 7B [RTX 3060]"]
-        M1["Private: Qwen 2.5  [RTX 5090]"]
+        M2@{ shape: "notch-pent", label: "Public: Mistral 7B [RTX 3060]" }
+        M1@{ shape: "notch-pent", label: "Private: Qwen 2.5  [RTX 5090]" }
     end
 
     %% === AI SERVICES ===
     subgraph AIServices["AI Services Layer"]
         direction TB
-        AI1["LangChain Orchestration"]
-        AI2["Ollama Runtime"]
-        AI3["CrewAI Agents"]
-        AI4["LlamaIndex RAG"]
+        AI1@{ shape: "hex", label: "LangChain Orchestration" }
+        AI2@{ shape: "hex", label: "Ollama Runtime" }
+        AI3@{ shape: "hex", label: "CrewAI Agents" }
+        AI4@{ shape: "hex", label: "LlamaIndex RAG" }
     end
 
     %% === DATA LAYER ===
     subgraph Data["Data Layer"]
         direction TB
-        D1["Chroma Vector DB"]
-        D2["Qdrant Vector DB"]
-        D3["PostgreSQL"]
-        D4["Redis Cache"]
+        D1@{ shape: "cyl", label: "Chroma Vector DB" }
+        D2@{ shape: "cyl", label: "Qdrant Vector DB" }
+        D3@{ shape: "cyl", label: "PostgreSQL" }
+        D4@{ shape: "cyl", label: "Redis Cache" }
     end
 
     %% === VIRTUAL ENVIRONMENT ===
@@ -143,7 +141,7 @@ flowchart TB
 
   %% Legend
   subgraph Legend[Legend]
-  direction TB
+  direction LR
     L1["Private Environment"]:::private
     L2["Public Environment"]:::public
   end
@@ -164,8 +162,8 @@ flowchart TB
         PrivateApp --> M1 ~~~ AIServices ~~~ D1 --> VM1 --> GPU1
         PublicApp --> M2 ~~~ AIServices ~~~ D2 --> VM2 --> GPU2 
         VM ~~~ GPU
-        DISK ~~~ CPU
-        GPU ~~~ CPU
+        d1 ~~~ cpu
+        GPU2 ~~~ ram
         Infra ~~~ Legend
 
     GPU1@{ shape: "display", label: "RTX 5090" }
@@ -197,7 +195,6 @@ flowchart TB
 	style UI fill:#737373
 	style Users fill:#737373
 	style Compute fill:#545454
-	style Legend stroke-width:1px,stroke-dasharray:5 5,fill:#000000
 	style GPU1 color:#7ED957,stroke-width:2px,stroke:#00BF63
 	style GPU2 color:#FF3131,stroke-width:2px,stroke:#FF3131
 	style P1 color:#000000
@@ -210,8 +207,6 @@ flowchart TB
 	style PU3 color:#000000
 	style D1 color:#000000
 	style D2 color:#000000
-	style L1 color:#000000
-	style L2 color:#000000
 	style VM1 color:#000000
 	style VM2 color:#000000
 	style CPU fill:#545454
@@ -221,6 +216,9 @@ flowchart TB
 	style d2 fill:#D9D9D9,color:#000000
 	style nw2 fill:#D0EECF
 	style nw1 color:#FF3131,fill:#FFE5E0
+	style Legend stroke-width:1px,stroke-dasharray:5 5
+	style L1 color:#000000,stroke-width:2px,stroke:#00BF63
+	style L2 color:#000000,stroke-width:2px,stroke:#FF3131
 ```
 
 </details>   
