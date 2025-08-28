@@ -6,7 +6,7 @@
 >
 > GOAL: Build, optimise, and master my own dual-AI system — a <kbd>private</kbd> “Second Brain” & <kbd>public</kbd> AI deployment — using Proxmox, GPU passthrough, Ollama, Qwen, Mistral, vector databases, and a robust dev stack.  
 >  
-
+<br />
 
 ## Table of Contents
 
@@ -17,9 +17,13 @@
 - [License](#license)
 
 ---
+<br />
 
 ## Overview
 Project Goal: Stand up a highly optimised, secure, and extensible local AI platform for private knowledge management and public-facing applications.
+
+---
+<br />
 
 ## **Architecture Stack**
 > Architecture highlights: GPU passthrough, RAG pipelines, full-stack monitoring, and modular security.
@@ -227,24 +231,82 @@ flowchart TB
 > The full [Stack Breakdown](/docs/ai-stack.md) is also available as a table.
 
 ---
+<br />
 
-## Getting Started: Custom Hardware Build
-<!--
-> A core part of the decision maaking towards this system was remaining under a $AUD 2400 budget whilst having a configuration that delivers good local AI capabilities \& performance (aiming at 50-70+ tokens/second) while maintaining complete data privacy and requiring minimal maintenance overhead. The component choices therefore represent aiming to achieve the optimal balance of privacy, performance, scalability and operational simplicity. 
+## Getting Started: AI Hardware Build
+> A core part of the original decision maaking towards this project was to build a desktop AI system that remained under a $AUD 2400 budget whilst having a configuration that delivers good local AI capabilities \& performance (aiming at 50-70+ tokens/second) - all while maintaining complete data privacy and requiring minimal maintenance overhead. 
+>
+> The component choices therefore represent aiming to achieve the optimal balance of privacy, performance, scalability and operational simplicity. 
+>
+> All that said -- I also specced up a beefy AI Workstation. This comes in at a respectable $AUD 8600 ticket price. The question becomes - is that $AUDc 6K difference worth it? 
+>
+>Well, below are the specs, a couple of views around gauging perfoormance - and finally a [ROI comparison](guides/performance-comparisons.md#roi-analysis). Make your own mind up from there.
 
- - 1 X [Gigabyte B760 GAMING](https://www.gigabyte.com/Motherboard/B760-GAMING-X-DDR4-rev-10) X AX MB, B760, 4x DDR5, 3x PCI-E 4.0/3.0 x16, 3x M.2, 4x SATA3, 2x USB 3.2, 1x USB-C 3.2, DisplayPort 1.2, HDMI 2.0, ATX, WIFI 6E
- - 1 X [Intel Core i5 14400F](https://www.intel.com/content/www/us/en/products/sku/236777/intel-core-i5-processor-14400f-20m-cache-up-to-4-70-ghz/specifications.html) (Base:2.5GHz, Turbo:4.7GHz / 29.5MB / LGA1700 / 10 Core / 16 Threads / 65W / Raptor Lake Refresh)
-  - 1 X [Thermalright Peerless Assassin 140 Black Dual Tower CPU Cooler](https://www.thermalright.com/product/peerless-assassin-140-black/), 120mm and 140mm Fan, Compatible with Intel 115X, 1200, 1700, 185X, 2011, 2066, AMD AM5
- - 2 X [G.Skill Flare X5 64GB (2x32GB) PC5-48000 (6000MHz) DDR5](https://www.gskill.com/products/1/165/396/Flare-X5-DDR5-AMD-EXPO), CL 36-36-36, 1.35V, Dual Channel Kit, Intel XMP 3.0 and EXPO Ready
- - 3 X [Crucial 1TB SSD](https://www.crucial.com/ssd/p3-plus/CT1000P3PSSD8), P3 Plus, M.2 2280 NVMe PCIe 4.0, Read up to 5,000MB/s, Write up to 3,600MB/s, 2M Hours MTBF, 220TBW
- - 1 X [MSI GeForce RTX 3060 VENTUS 2X 12G OC](https://www.msi.com/Graphics-Card/GeForce-RTX-3060-VENTUS-2X-12G-OC) (Boost: 1807MHz), 12GB GDDR6 (15000MHz), PCI-E 4.0, 3x DisplayPort 1.4a, 1x HDMI 2.1, Vented Backplate, TORX Fan
+
+<br />
+
+<details><summary>BUILD COMPARISON</summary>
+
+| Component | **Desktop AI Build** | **Workstation AI Build** |
+|---|---|---|
+| **[CPU](guides/performance-comparisons.md#️-cpu-comparison)** | Intel Core i5-14400F — Base 2.5GHz / Turbo 4.7GHz, 10C (6P+4E) / 16T, 65W (LGA1700) | Intel Core **Ultra 9 285K** — Base ~3.2GHz / Turbo 5.7GHz, **24C (8P+16E) / 24T**, up to 250W (LGA1851), **NPU** |
+| **CPU Cooler** | Thermalright **Peerless Assassin 140 Black** (dual-tower air) | Thermalright **Frozen Warframe 360** ARGB (360 mm AIO) |
+| **Motherboard** | Gigabyte B760 Gaming AX / similar (DDR5, ATX, Wi-Fi 6, 2.5GbE) | ASUS **TUF Z890-Plus WiFi** (DDR5, **PCIe 5.0**, Wi-Fi 7 class, 2.5GbE) |
+| **Memory** | **128 GB DDR5-6000** (4×32 GB) | **128 GB DDR5-5600** (4×32 GB) |
+| **[GPU](guides/performance-comparisons.md#-gpu-comparison) (Primary)** | MSI GeForce **RTX 3060** Ventus 2X 12G OC — 12 GB GDDR6, PCIe 4.0, 3×DP 1.4a + 1×HDMI 2.1 | ZOTAC GAMING **RTX 5090 32 GB** — GDDR7, PCIe **5.0**, 3×DP 2.1a + 1×HDMI, advanced cooling |
+| **GPU (Secondary)** | — | MSI GeForce **RTX 3060** Ventus 2X 12G OC — 12 GB GDDR6 |
+| **[Storage](guides/performance-comparisons.md#-storage-comparison)** | **2 TB NVMe** (2×1 TB PCIe 4.0) | **3 TB usable NVMe** ( (2×1 TB) RAID1 + (2×2 TB) RAID1, PCIe 4.0 ) |
+| **Case** | Montech **AIR 1000 Premium** (mid-tower, airflow) | **ASUS ProArt PA602** (E-ATX, creator-grade, high airflow) |
+| **PSU** | Cooler Master **MWE Gold V2 750 W** (80+ Gold) | ASUS **ROG STRIX 1200G** (80+ Gold) / or 1200–1600 W class |
+| **Fans / Extras** | 3x 140 mm high-flow case fans | 2x 200mm + 1x 140mm Case fans; Additional 3x 140 mm high-flow fans; anti-sag GPU bracket |
+| **OS** | Ubuntu/Proxmox | **Proxmox VE** / Ubuntu for virtualised stacks |
+
+</details><br />
+
+<details><summary>What those specs mean in real life</summary>
+
+| Domain | What changes | Why it matters in your AI hub |
+|:--|:--|:--|
+| **Parallel pipelines** | 24C/24T vs 10C/16T | **More concurrent workers**: faster doc ingestion, chunking, embedding, vector indexing, PDF parsing, OCR, ASR – all at once without starving the model server. |
+| **Latency under load** | Bigger L2/L3 (40MB/36MB) | **Lower cache misses** in token decode loops, JSON parsing, HTTP frameworks; steadier p95 latency when RAG + agents + API traffic hit together. |
+| **Throughput ceilings** | Higher P-core turbo + sustained power | **Sustained boost** during long jobs (ingest, batch embedding, FAISS/ANN build); fewer “down-clocks” once the case warms up. |
+| **Virtualisation** | More cores + bigger uncore | **Hard isolation**: dedicate whole cores + a full GPU per VM (e.g., Proxmox). Private “Second Brain” can’t be impacted by public POC load. |
+| **I/O bandwidth** | Z890, PCIe **5.0**, more lanes | **More NVMe at x4 each** and **GPU on Gen5** → fewer bus bottlenecks when you slam disk (Unstructured/LlamaParse) and serve models simultaneously. |
+| **Media offload** | iGPU (Quick Sync) present | Free the 5090 for inference; use the iGPU for **transcodes/screen share/recording** in demos, or WebRTC gateways. |
+| **On-CPU AI** | **NPU** on Arrow Lake | Offload **small models** / filters via **OpenVINO** (e.g., TTS, OCR pre-/post-processing). Not a big LLM accelerator, but **frees CPU/GPU cycles** for the main graph. |
+| **Storage topology** | RAID1 + RAID1 (3 TB usable) | **Redundancy** and **parallel reads**; safer for always-on quorums (Postgres/Qdrant) and faster cold-start reload of indices than a single 2 TB. |
+| **Power headroom** | 1200 W vs 750 W | **Fewer brownouts/throttles** when both GPUs and the CPU surge; leaves room for future drives or a higher-TDP GPU. |
+
+</details>
+<br />
+
+<details><summary>Performance-oriented comparison</summary>
+
+| Metric | Desktop AI | Workstation AI | What you feel day-to-day |
+|:--|:--|:--|:--|
+| **Max viable model** | ~30B quantised (tight) | **70B+** quantised / mixed-precision | Bigger models and/or larger batch sizes without juggling VRAM. |
+| **RAG QPS (steady)** | Moderate (single-tenant) | **High**, survives load spikes | Public POC traffic won’t tank your private assistant. |
+| **Batch embedding** | Minutes for large corpora | **2–4× faster** end-to-end | Cores + cache + PCIe keep workers fed; less tail latency. |
+| **Agent graphs** | Occasional stalls under load | **Smooth concurrency** | Orchestrators (LangChain/LangGraph/CrewAI) keep parallel tools responsive. |
+| **Virtual machines** | Not recommended for GPU | **Yes**: one GPU per VM | Clean dev/prod separation, easier demos. |
+| **Media/ASR/TTS side-tasks** | Eats CPU/GPU budget | **iGPU/NPU offload** | Keeps the main LLM hot path snappy. |
+| **Resilience** | Single disk set | **Mirrored sets** | Safe rebuilds, faster index reloads. |
+| **Thermals / acoustics** | Air, OK under load | **360 mm AIO + big chassis** | Sustained boost clocks with lower noise. |
+
+</details>
+<br />
+
 
 > **Begin at [`/docs/host-setup.md`](/docs/host-setup.md)** for the physical-to-virtualisation platform configurations.
---> TBD [Currently in Flux]
+
 ---
+<br />
+
 
 ## Proposed Implementation Steps & Milestones
 > Oh, yes, this is subject to change. I'm following a few interesting projects at the moment that may strongly influence me to incorporate their findings. I will record and track these changes when and if they occur.
+
+<details><summary>Proposed Milestone Journey</summary>
 
 | Step | Focus Area | Key Outcome/Deliverable |
 | ----- | ----- | ----- |
@@ -261,20 +323,30 @@ flowchart TB
 | 11 | RAG Pipeline, Dev Container, Jupyter | Document chunking, dev tools, JupyterLab online |
 | 12 | Security Review, Benchmark, Final Tuning | Firewall finalization, performance, handover docs |
 
+</details>
+<br />
+
 > I'll use `/docs/milestone-checklist.md` to track my progress.
 
 ---
+<br />
 
 ## Contributing
 
 Contributions and suggestions are welcome — please use Issues/Discussions for suggestions, requests and Q&A. I don't percieve that you will want to, but you are of course welcome to fork or submit pull requests as well.
 
 ---
+<br />
 
 ## License
 
 This repository is licensed under the **GNU General Public License v3.0**. See [LICENSE](LICENSE) for details.
 
 ---
+<br />
 
 *Happy building! For questions, feedback, or to share your own extensions, open a Discussion or contact the repo owner.*
+
+---
+
+
