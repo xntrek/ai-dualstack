@@ -1,5 +1,19 @@
-# **💻 AI Build Comparison – Desktop vs Workstation**
+# AI Build Comparison – Desktop vs Workstation
+---
 
+* Build Performance Comparisons:
+	- [Overall Performance Gains Summary](#overall-performance-gains-summary)
+	- [CPU Comparison](#cpu-comparison)
+	- [GPU Comparison](#gpu-comparison)
+	- [Storage Comparison](#storage-comparison)
+
+-  ROI Analysis
+	-  [TL;DR](#roi-analysis)
+	-  [Approximate Performance Uplifts](#approximate-performance-uplifts)
+	-  [Normalised “Performance-per-Dollar” Approximation](#normalised-performance-per-dollar-approximation)
+	-  [The Reality Check](#the-reality-check)
+
+---
 This document compares the **Desktop AI Build** against the **Workstation AI Build**, component by component.
 
 ### **📘 Legend**
@@ -11,7 +25,7 @@ This document compares the **Desktop AI Build** against the **Workstation AI Bui
 --- 
 <br />
 
-## **📊 Overall Performance Gains – Executive Summary**
+## Overall Performance Gains – Summary
 
 | Component | Gain / Trade-off Summary |
 | :---- | :---- |
@@ -23,7 +37,7 @@ This document compares the **Desktop AI Build** against the **Workstation AI Bui
 --- 
 <br />
 
-## **🖥️ CPU Comparison**
+## CPU Comparison
 
 | Feature | Desktop AI Build – Intel Core i5-14400F | Workstation AI Build – Intel Core Ultra 9 285K |
 | :---- | :---- | :---- |
@@ -46,7 +60,7 @@ This document compares the **Desktop AI Build** against the **Workstation AI Bui
 --- 
 <br />
 
-## **🎮 GPU Comparison**
+## GPU Comparison
 
 | Feature | Desktop AI Build – RTX 3060 12GB | Workstation AI Build – RTX 5090 32GB \+ RTX 3060 (secondary) |
 | :---- | :---- | :---- |
@@ -67,7 +81,7 @@ This document compares the **Desktop AI Build** against the **Workstation AI Bui
 --- 
 <br />
 
-## **💾 Storage Comparison**
+## Storage Comparison
 
 | Feature | Desktop AI Build | Workstation AI Build (mirrored) |
 | :---- | :---- | :---- |
@@ -89,8 +103,19 @@ This document compares the **Desktop AI Build** against the **Workstation AI Bui
 <br />
 
 # ROI Analysis
+## TL;DR
+
+On average, the workstation build delivers ~65% the efficiency per dollar compared to the desktop build.
+
+* That means while the workstation is **_vastly more powerful_**, you’re “paying extra” for that performance — the desktop gives you __more raw value per $ spent__, but the <kbd>workstation unlocks capabilities</kbd> (AI inference, GPU memory, future-proofing) that the desktop simply _cannot_ match.
+
+* If you’re <kbd>budget-conscious</kbd> and running small-to-mid scale models (≤30B), the **desktop is far better value**.
+
+* If you _need_ to *enable* larger models, heavy multi-tasking, or a 7–10 year future horizon, the workstation makes sense — but you’re paying a premium for _capability_, not _efficiency_.
 ---
-## **Approximate Performance Uplifts**
+<br />
+
+## Approximate Performance Uplifts
 
 | Domain | Desktop Build | Workstation Build | Relative Uplift |
 | ----- | ----- | ----- | ----- |
@@ -103,7 +128,7 @@ This document compares the **Desktop AI Build** against the **Workstation AI Bui
 ---
 <br />
 
-## **Normalised “Performance-per-Dollar” Approximation**
+## Normalised “Performance-per-Dollar” Approximation
 
 We can build a crude index by assigning the desktop a **baseline** of 1.0 in each category, and then scaling the workstation relative to its cost.
 
@@ -121,28 +146,14 @@ Now let’s divide performance uplift by cost multiplier:
 ---
 <br />
 
-## **The Reality Check**
+## The Reality Check
 
 * On *raw efficiency per dollar*, the **desktop wins** in most categories (better “bang for buck”).
 
-* On **AI workloads specifically**, the workstation justifies its cost (almost linear $→performance scaling).
+* On **AI workloads specifically**, the workstation justifies its cost (almost linear $ → performance scaling).
 
-* On **practical terms**, the workstation’s advantage is not about *efficiency per dollar*, but about *enabling workloads the desktop simply cannot do*. E.g. if your research requires 70B models, the desktop literally can’t run them, so the performance-per-dollar question becomes moot.
+* On **practical terms**, the workstation’s advantage is not about *efficiency per dollar*, but about *enabling workloads the desktop simply cannot do*.   
+(e.g. if your research requires 70B models, the desktop literally can’t run them, so the performance-per-dollar question becomes moot.)
 
 ---
 <br />
-
-## **So in short:**
-
-On average, the workstation build delivers ~65% the efficiency per dollar compared to the desktop build.
-
-* That means while the workstation is **_vastly more powerful_**, you’re “paying extra” for that performance — the desktop gives you __more raw value per $ spent__, but the <kbd>workstation unlocks capabilities</kbd> (AI inference, GPU memory, future-proofing) that the desktop simply _cannot_ match.
-
-* If you’re <kbd>budget-conscious</kbd> and running small-to-mid scale models (≤30B), the **desktop is far better value**.
-
-* If you _need_ to *enable* larger models, heavy multi-tasking, or a 7–10 year future horizon, the workstation makes sense — but you’re paying a premium for _capability_, not _efficiency_.
-
-
-</details>
-<br />
-
