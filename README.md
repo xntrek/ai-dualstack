@@ -229,7 +229,7 @@ flowchart TB
 </details>   
    <br>
 
-> The full [Stack Breakdown](../../undefined) is also available as a table.
+> The full [Stack Breakdown](/docs/ai-stack.md) is also available as a table.
 
 ---
 <br />
@@ -241,19 +241,19 @@ flowchart TB
 >
 > All that said -- I also specced up a beefy AI Workstation. This comes in at a respectable $AUD 8600 ticket price. The question becomes - is that $AUDc 6K difference worth it? 
 >
->Well, below are the specs, a couple of views around gauging perfoormance - and finally a [ROI comparison](../../undefined#roi-analysis). Make your own mind up from there.
+>Well, below are the specs, a couple of views around gauging perfoormance - and finally a [ROI comparison](/guides/performance-comparisons.md#roi-analysis). Make your own mind up from there.
 <br />
 <details><summary>BUILD COMPARISON</summary>
 
 | Component                                                               | **Desktop AI Build**                                                                      | **Workstation AI Build**                                                                                         |
 |-------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
-| **[CPU](../../undefined#️-cpu-comparison)**           | Intel Core i5-14400F — Base 2.5GHz / Turbo 4.7GHz, 10C (6P+4E) / 16T, 65W (LGA1700)       | Intel Core **Ultra 9 285K** — Base ~3.2GHz / Turbo 5.7GHz, **24C (8P+16E) / 24T**, up to 250W (LGA1851), **NPU** |
+| **[CPU](/guides/performance-comparisons.md#cpu-comparison)**           | Intel Core i5-14400F — Base 2.5GHz / Turbo 4.7GHz, 10C (6P+4E) / 16T, 65W (LGA1700)       | Intel Core **Ultra 9 285K** — Base ~3.2GHz / Turbo 5.7GHz, **24C (8P+16E) / 24T**, up to 250W (LGA1851), **NPU** |
 | **CPU Cooler**                                                          | Thermalright **Peerless Assassin 140 Black** (dual-tower air)                             | Thermalright **Frozen Warframe 360** ARGB (360 mm AIO)                                                           |
 | **Motherboard**                                                         | Gigabyte B760 Gaming AX / similar (DDR5, ATX, Wi-Fi 6, 2.5GbE)                            | ASUS **TUF Z890-Plus WiFi** (DDR5, **PCIe 5.0**, Wi-Fi 7 class, 2.5GbE)                                          |
 | **Memory**                                                              | **128 GB DDR5-6000** (4×32 GB)                                                            | **128 GB DDR5-5600** (4×32 GB)                                                                                   |
-| **[GPU](../../undefined#-gpu-comparison) (Primary)** | MSI GeForce **RTX 3060** Ventus 2X 12G OC — 12 GB GDDR6, PCIe 4.0, 3×DP 1.4a + 1×HDMI 2.1 | ZOTAC GAMING **RTX 5090 32 GB** — GDDR7, PCIe **5.0**, 3×DP 2.1a + 1×HDMI, advanced cooling                      |
+| **[GPU](/guides/performance-comparisons.md#gpu-comparison) (Primary)** | MSI GeForce **RTX 3060** Ventus 2X 12G OC — 12 GB GDDR6, PCIe 4.0, 3×DP 1.4a + 1×HDMI 2.1 | ZOTAC GAMING **RTX 5090 32 GB** — GDDR7, PCIe **5.0**, 3×DP 2.1a + 1×HDMI, advanced cooling                      |
 | **GPU (Secondary)**                                                     | —                                                                                         | MSI GeForce **RTX 3060** Ventus 2X 12G OC — 12 GB GDDR6                                                          |
-| **[Storage](../../undefined#-storage-comparison)**   | **2 TB NVMe** (2×1 TB PCIe 4.0)                                                           | **3 TB usable NVMe** ( (2×1 TB) RAID1 + (2×2 TB) RAID1, PCIe 4.0 )                                               |
+| **[Storage](/guides/performance-comparisons.md#storage-comparison)**   | **2 TB NVMe** (2×1 TB PCIe 4.0)                                                           | **3 TB usable NVMe** ( (2×1 TB) RAID1 + (2×2 TB) RAID1, PCIe 4.0 )                                               |
 | **Case**                                                                | Montech **AIR 1000 Premium** (mid-tower, airflow)                                         | **ASUS ProArt PA602** (E-ATX, creator-grade, high airflow)                                                       |
 | **PSU**                                                                 | Cooler Master **MWE Gold V2 750 W** (80+ Gold)                                            | ASUS **ROG STRIX 1200G** (80+ Gold) / or 1200–1600 W class                                                       |
 | **Fans / Extras**                                                       | 3x 140 mm high-flow case fans                                                             | 2x 200mm + 1x 140mm Case fans; Additional 3x 140 mm high-flow fans; anti-sag GPU bracket                         |
@@ -292,7 +292,7 @@ flowchart TB
 <br />
 
 
-> **Begin at [`/docs/host-setup.md`](/docs/host-setup.md)** for the physical-to-virtualisation platform configurations.
+> **Begin at [`host-setup.md`](/config/host-setup.md)** for the physical-to-virtualisation platform configurations.
 
 ---
 <br />
@@ -321,7 +321,7 @@ flowchart TB
 </details>
 <br />
 
-> I'll use `/docs/milestone-checklist.md` to track my progress.
+> I'll use [`milestone-checklist.md`](/Planner/checklist.md) to track my progress.
 
 ---
 <br />
