@@ -1,8 +1,8 @@
 # AI Build Comparison – Desktop vs Workstation
 ---
-
+<a name="Top"></a>
 * Build Performance Comparisons:
-	- [Overall Performance Gains Summary](#overall-performance-gains-summary)
+	- [Overall Performance Gains](#overall-performance-gains)
 	- [CPU Comparison](#cpu-comparison)
 	- [GPU Comparison](#gpu-comparison)
 	- [Storage Comparison](#storage-comparison)
@@ -14,7 +14,7 @@
 	-  [The Reality Check](#the-reality-check)
 
 ---
-This document compares the **Desktop AI Build** against the **Workstation AI Build**, component by component.
+This document compares the relative perrformance of the [**Desktop AI Build** against the **Workstation AI Build**](#build-specs).
 
 ### **📘 Legend**
 
@@ -25,16 +25,17 @@ This document compares the **Desktop AI Build** against the **Workstation AI Bui
 --- 
 <br />
 
-## Overall Performance Gains – Summary
+## Overall Performance Gains
 
 | Component | Gain / Trade-off Summary |
 | :---- | :---- |
-| **CPU** | 🟩 \~2.4× cores, \~20% faster per core, bigger caches → strong for parallel AI workloads. 🟥 Higher power/heat. |
-| **GPU** | 🟩 RTX 5090 is a generational leap (\~5–6× faster, 32GB VRAM). 🟨 Secondary 3060 adds flexibility. 🟥 Huge cooling & PSU needs. |
-| **Storage** | 🟩 Mirrored drives \= reliability. 🟨 Gen5 NVMe faster. 🟥 Effective usable capacity same as budget build. |
+| **CPU** | 🟩 \~2.4× cores, \~20% faster per core, bigger caches → strong for parallel AI workloads. <br> 🟥 Higher power/heat. |
+| **GPU** | 🟩 RTX 5090 is a generational leap (\~5–6× faster, 32GB VRAM). <br>🟨 Secondary 3060 adds flexibility. <br>🟥 Huge cooling & PSU needs. |
+| **Storage** | 🟩 Mirrored drives \= reliability. <br>🟨 Gen5 NVMe faster. <br>🟥 Effective usable capacity same as budget build. |
 | **Power/Cost** | 🟥 Workstation draws \~2× power, requires advanced cooling, far more expensive. |
 
 --- 
+[⌤](#Top)
 <br />
 
 ## CPU Comparison
@@ -58,17 +59,18 @@ This document compares the **Desktop AI Build** against the **Workstation AI Bui
 - 🟨 A budget i5 build is quieter and cheaper to run, and still solid for development and testing.
 
 --- 
+[⌤](#Top)
 <br />
 
 ## GPU Comparison
 
 | Feature | Desktop AI Build – RTX 3060 12GB | Workstation AI Build – RTX 5090 32GB \+ RTX 3060 (secondary) |
 | :---- | :---- | :---- |
-| **CUDA Cores** | 3584 | 24,576 (5090) \+ 3584 (3060 secondary) |
-| **VRAM** | 12GB GDDR6 | 32GB GDDR7 (5090) \+ 12GB GDDR6 (3060) |
-| **Bandwidth** | 360 GB/s | 1.5 TB/s (5090) \+ 360 GB/s (3060) |
-| **Ports** | 3x DP 1.4a, 1x HDMI 2.1 | 3x DP 2.1a, 1x HDMI (5090) \+ standard 3060 outputs |
-| **DLSS / Features** | DLSS 2 | DLSS 4, Ray Tracing Gen 4, SPECTRA, IceStorm cooling |
+| **CUDA Cores** | 3584 | 24,576 (5090) \+ <br>3584 (3060 secondary) |
+| **VRAM** | 12GB GDDR6 | 32GB GDDR7 (5090) \+ <br>12GB GDDR6 (3060) |
+| **Bandwidth** | 360 GB/s | 1.5 TB/s (5090) \+ <br>360 GB/s (3060) |
+| **Ports** | 3x DP 1.4a, <br>1x HDMI 2.1 | 3x DP 2.1a, <br>1x HDMI (5090) \+ <br>standard 3060 outputs |
+| **DLSS / Features** | DLSS 2 | DLSS 4, <br>Ray Tracing Gen 4, <br>SPECTRA, <br>IceStorm cooling |
 
 ### **🔍 Reality Check – GPU Performance Translation**
 
@@ -79,6 +81,7 @@ This document compares the **Desktop AI Build** against the **Workstation AI Bui
 - 🟨 The desktop 3060 build is still adequate for model prototyping and smaller datasets.
 
 --- 
+[⌤](#Top)
 <br />
 
 ## Storage Comparison
@@ -98,11 +101,19 @@ This document compares the **Desktop AI Build** against the **Workstation AI Bui
 - 🟨 Desktop build has more raw capacity (without redundancy), cheaper overall.
 
 ***
+[⌤](#Top)
 <br />
 <br />
 <br />
 
 # ROI Analysis
+
+<div align="center">
+	
+[TL;DR](#roi-analysis) | [Performance Uplifts](#approximate-performance-uplifts) | [“Performance-per-Dollar”](#normalised-performance-per-dollar-approximation) | [Reality Check](#the-reality-check) | [⌤](#Top)
+
+</div>
+
 ## TL;DR
 
 On average, the workstation build delivers ~65% the efficiency per dollar compared to the desktop build.
@@ -113,6 +124,7 @@ On average, the workstation build delivers ~65% the efficiency per dollar compar
 
 * If you _need_ to *enable* larger models, heavy multi-tasking, or a 7–10 year future horizon, the workstation makes sense — but you’re paying a premium for _capability_, not _efficiency_.
 ---
+[⌃](#roi-analysis)
 <br />
 
 ## Approximate Performance Uplifts
@@ -126,6 +138,7 @@ On average, the workstation build delivers ~65% the efficiency per dollar compar
 | **Future-proofing horizon** | 3–5 yrs | 7–10 yrs | **2× lifespan** |
 
 ---
+[⌃](#roi-analysis)
 <br />
 
 ## Normalised “Performance-per-Dollar” Approximation
@@ -144,6 +157,7 @@ Now let’s divide performance uplift by cost multiplier:
 | **Longevity (years usable)** | 2× | 3.74× | **0.53× (less efficient)** |
 
 ---
+[⌃](#roi-analysis)
 <br />
 
 ## The Reality Check
@@ -156,4 +170,26 @@ Now let’s divide performance uplift by cost multiplier:
 (e.g. if your research requires 70B models, the desktop literally can’t run them, so the performance-per-dollar question becomes moot.)
 
 ---
+[⌃](#roi-analysis)
 <br />
+
+
+<details><summary><a name="build-specs">BUILD SPECS</a></summary>
+
+| Component                                                               | **Desktop AI Build**                                                                      | **Workstation AI Build**                                                                                         |
+|-------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| **[CPU](/guides/performance-comparisons.md#cpu-comparison)**           | Intel Core i5-14400F — Base 2.5GHz / Turbo 4.7GHz, 10C (6P+4E) / 16T, 65W (LGA1700)       | Intel Core **Ultra 9 285K** — Base ~3.2GHz / Turbo 5.7GHz, **24C (8P+16E) / 24T**, up to 250W (LGA1851), **NPU** |
+| **CPU Cooler**                                                          | Thermalright **Peerless Assassin 140 Black** (dual-tower air)                             | Thermalright **Frozen Warframe 360** ARGB (360 mm AIO)                                                           |
+| **Motherboard**                                                         | Gigabyte B760 Gaming AX / similar (DDR5, ATX, Wi-Fi 6, 2.5GbE)                            | ASUS **TUF Z890-Plus WiFi** (DDR5, **PCIe 5.0**, Wi-Fi 7 class, 2.5GbE)                                          |
+| **Memory**                                                              | **128 GB DDR5-6000** (4×32 GB)                                                            | **128 GB DDR5-6000** (4×32 GB)                                                                                   |
+| **[GPU](/guides/performance-comparisons.md#gpu-comparison) (Primary)** | MSI GeForce **RTX 3060** Ventus 2X 12G OC — 12 GB GDDR6, PCIe 4.0, 3×DP 1.4a + 1×HDMI 2.1 | ZOTAC GAMING **RTX 5090 32 GB** — GDDR7, PCIe **5.0**, 3×DP 2.1a + 1×HDMI, advanced cooling                      |
+| **GPU (Secondary)**                                                     | —                                                                                         | MSI GeForce **RTX 3060** Ventus 2X 12G OC — 12 GB GDDR6                                                          |
+| **[Storage](/guides/performance-comparisons.md#storage-comparison)**   | **2 TB NVMe** (2×1 TB PCIe 4.0)                                                           | **3 TB usable NVMe** ( (2×1 TB) RAID1 + (2×2 TB) RAID1, PCIe 4.0 )                                               |
+| **Case**                                                                | Montech **AIR 1000 Premium** (mid-tower, airflow)                                         | **ASUS ProArt PA602** (E-ATX, creator-grade, high airflow)                                                       |
+| **PSU**                                                                 | Cooler Master **MWE Gold V2 750 W** (80+ Gold)                                            | ASUS **ROG STRIX 1200G** (80+ Gold) / or 1200–1600 W class                                                       |
+| **Fans / Extras**                                                       | 3x 140 mm high-flow case fans                                                             | 2x 200mm + 1x 140mm Case fans; Additional 3x 140 mm high-flow fans; anti-sag GPU bracket                         |
+| **OS**                                                                  | Ubuntu/Proxmox                                                                            | **Proxmox VE** / Ubuntu for virtualised stacks                                                                   |
+
+</details>
+
+[⌤](#Top)
