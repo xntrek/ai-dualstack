@@ -8,16 +8,12 @@
 >  
 <br />
 
-## Table of Contents
+## Contents
+<div align="center">
 
-- [Overview](#overview) 
-- [Architecture](#architecture-stack)
-- [Getting Started](#getting-started-ai-hardware-build)
-- [Project Roadmap](#proposed-implementation-steps-milestones)
-- [Contributing](#contributing)
-- [License](#license)
+[Overview](#overview) | [Architecture](#architecture-stack) | [Getting Started](#getting-started-ai-hardware-build) | [Project Roadmap](#proposed-implementation-steps-milestones) | [Contributing](#contributing) | [License](#license)
 
----
+</div>
 <br />
 
 ## Overview
