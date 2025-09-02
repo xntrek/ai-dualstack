@@ -1,3 +1,5 @@
+
+```bash
 #!/bin/bash
 # ai-benchmark.sh
 # AI model, GPU, and vector DB benchmarks for performance monitoring.
@@ -20,3 +22,4 @@ time curl -X GET http://localhost:6333/collections 2>>$BENCHMARK_LOG >>$BENCHMAR
 
 echo "Benchmark completed" >> $BENCHMARK_LOG
 echo "=========================================" >> $BENCHMARK_LOG
+```

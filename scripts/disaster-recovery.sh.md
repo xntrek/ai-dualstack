@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 # disaster-recovery.sh
 # Restores Proxmox VM (101) and/or LXC (102) from backup.
@@ -23,4 +24,4 @@ case "$1" in
     "public") restore_public_ai ;;
     "full") restore_private_ai && restore_public_ai ;;
     *) echo "Usage: $0 {private|public|full}" ;;
-esac
+esac```

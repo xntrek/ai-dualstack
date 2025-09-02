@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 # ai-backup.sh
 # Automated backup of Proxmox VM (101), LXC (102), and Docker volumes.
@@ -14,4 +15,4 @@ vzdump 102 --storage backup-storage --mode snapshot --compress zstd
 # Backup docker volumes (edit path as appropriate for your system)
 rsync -av /var/lib/docker/volumes/ $BACKUP_DIR/docker-volumes/
 
-echo "$(date): Backup completed" >> $LOG_FILE
+echo "$(date): Backup completed" >> $LOG_FILE```

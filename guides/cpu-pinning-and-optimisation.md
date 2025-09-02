@@ -18,7 +18,7 @@ Validate affinity using:
 `htop` # View real-time stats
 
 
-> see also: [/config/cpu-pin-cfg.md](../config/cpu-pin-cfg.md)
+> see also: [/config/cpu-pin-cfg.md](/config/cpu-pin-cfg.md)
 
 _[1]_: See following articles:   
 - [PSA How to configure Proxmox for lower power usage](https://community.home-assistant.io/t/psa-how-to-configure-proxmox-for-lower-power-usage/323731)
